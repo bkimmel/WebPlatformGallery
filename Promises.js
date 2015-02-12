@@ -29,6 +29,19 @@ var p2 = new Promise(function(res, rej){
     complicatedthing(res);
 });
 
+//Then feed the receiver to the promise
 p2.then(genericreceiver);
+
+var p3 = new Promise(function(res,rej){
+    setTimeout(res, 3000, '1st one');
+});
+var p4 = new Promise(function(res,rej){
+    setTimeout(res, 5000, '2nd one');
+});
+
+var p5 = Promise.all([p3, p4]);
+
+p5.then(genericreceiver); // receiver gets ['1st one','2nd one'] @ 5000ms
+
 
 
