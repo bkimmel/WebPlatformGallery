@@ -44,7 +44,7 @@ var p5 = Promise.all([p3, p4]);
 p5.then(genericreceiver); // receiver gets ['1st one','2nd one'] @ 5000ms
 
 
-//Use Promise.race to let whichever thing finishes "first" matriculate to the reciever.  Useful for setting time limits, etc.
+//Use Promise.race to let whichever thing finishes "first" matriculate to the receiver.  Useful for setting time limits, etc.
 var p6 = new Promise(function(resolve, reject) { 
     setTimeout(resolve, 500, " accepting: five"); 
 });
