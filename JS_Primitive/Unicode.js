@@ -33,5 +33,11 @@ var regexSymbolWithCombiningMarks = /([\0-\u02FF\u0370-\u1DBF\u1E00-\u20CF\u2100
 console.log( 'man\u0303ana'.match(regexSymbolWithCombiningMarks) );
 console.log( 'man\u0303ana'.replace(regexSymbolWithCombiningMarks, function(match, symbol, combiner){ return combiner + symbol }).split('').reverse().join('') );
 
+console.log(String.fromCharCode(0xD835, 0xD800)); //=> Math Bold A (1D400)
+
+//ES6 Only
+// /First.Second/gu //=> 'u' flag makes the dot match unicode characters for RegEx
+
 //General notes: in Node, especially for Request lengths, always use Buffer lengths and not string lengths.
   //Always account for Supplementary symbols whenever counting or slicing symbols from uncontrolled sources.
+

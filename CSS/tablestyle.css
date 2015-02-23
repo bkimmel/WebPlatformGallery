@@ -1,0 +1,4 @@
+.sometable {
+  /* This sets the width to be col width, or the width of the first column.  Makes layout super fast, but may overflow later columns */
+  table-layout: fixed;
+}
