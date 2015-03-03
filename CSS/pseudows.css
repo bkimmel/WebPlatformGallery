@@ -1,0 +1,14 @@
+/*For putting line breaks in pseudo-element content.*/
+#demoform::after {
+	position: absolute;
+	bottom: -3.0em;
+	left: 2.5em;
+	font-size: .4em;
+	color: black;
+	display: block;
+	
+	text-align: left;
+	content: "We guarantee 100% privacy.\AYour information will not be shared.";
+	white-space: pre;
+	/* Use white-space: pre; to preserve whitespace (\A) in css content. */
+}
