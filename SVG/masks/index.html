@@ -1,0 +1,39 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>sample</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="styles/main.css"> -->
+    </head>
+    <body>
+        <h1>SVG Masks, Images & Clip-path Labs</h1>
+
+
+		<svg xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" style="height: 10em; border: 1px solid red;">
+		  <defs>
+		    <linearGradient id="faderight"
+				x1="0%" y1="0%"
+				x2="100%" y2="0%"
+				spreadMethod="pad"
+		    >
+		      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+		      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
+		    </linearGradient>
+		    <mask id="fademask" width="100" height="100">
+		      <circle cx="50" cy="50" />
+		    </mask>
+		  </defs>	
+		  <image x="35" y="35" width="30" height="30" 
+			 xlink:href="./app-icon-rs.png" />
+		   <text y="20%" x="20%" font-size=".5em">A Plain .png in SVG</text>
+		</svg>
+        <!-- <script src="scripts/main.js"></script> -->
+        <script>
+			console.log('Hola Mundo');
+		</script>
+</body>
+</html>
