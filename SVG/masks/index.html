@@ -21,7 +21,10 @@
 		<svg xmlns="http://www.w3.org/2000/svg"
 			xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" style="height: 10em; border: 1px solid red;">
 		  <defs>
-		    <mask id="easymask" width="100" height="100">
+		  	<!-- The width and height of the mask have no bearing on its actual size.  That is controlled in the mask elements.-->
+		    <mask id="easymask" width="1" height="1">
+		      <!--The radius of the circle here (r) determines the size of the mask-->
+		      <!--The positioning of the path elements (here cx and cy) determine where the mask shows up-->
 		      <circle cx="50" cy="50" r="10" style="stroke:none; fill: #fff" />
 		    </mask>
 		  </defs>	
@@ -30,8 +33,8 @@
 			 style="mask: url(#easymask);" />
 		   <text y="20%" x="20%" font-size=".5em">a circle mask</text>
 		</svg>
-		
-		<svg xmlns="http://www.w3.org/2000/svg"
+
+		<svg class="circ_grad" xmlns="http://www.w3.org/2000/svg"
 			xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" style="height: 10em; border: 1px solid red;">
 		  <defs>
 		    <linearGradient id="faderight"
@@ -39,7 +42,9 @@
 				x2="100%" y2="0%"
 				spreadMethod="pad"
 		    >
+		    <!-- spreadMethod is only relevant if the gradient does not cover the whole shape -->
 		      <stop offset="0%" stop-color="#000" stop-opacity="1"/>
+		      <stop offset="100%" stop-color="#000" stop-opacity="1"/>
 		      <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
 		    </linearGradient>
 		    <mask id="fademask" width="40" height="40">
@@ -54,6 +59,32 @@
         <!-- <script src="scripts/main.js"></script> -->
         <script>
 			console.log('Hola Mundo');
+			function movecirclegradient(duration_in_ms) {
+				var start = Date.now();
+				var dur = duration_in_ms;
+				var gradientstop = document.querySelector('#faderight stop:nth-child(2)');
+				function moveit() {
+					var progress = ( Date.now() - start ) / dur;
+					requestAnimationFrame(function(){
+						if(progress < 1) {
+							var pct = ( 100 - (100 * progress) ) + '%';
+							gradientstop.setAttribute('offset', pct);
+							var stopcolor = parseInt(255 * progress, 10);
+							gradientstop.setAttribute('stop-color', 'rgb(' + stopcolor + ', ' + stopcolor + ', ' + stopcolor + ')');
+							moveit();
+						}
+						else {
+							var pct = '0%';
+							gradientstop.setAttribute('stop-color', 'rgb(255,255,255)');
+							gradientstop.setAttribute('offset', pct);
+						}
+					});
+				}
+				moveit();
+			}
+			document.querySelector('.circ_grad').addEventListener('click', function(e){
+				movecirclegradient(500);
+			});
 		</script>
 </body>
 </html>

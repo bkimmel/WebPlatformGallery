@@ -1,0 +1,106 @@
+/*1: Lay the mask over the video */
+			.svg-inverted-mask {
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  top: 0;
+			  left: 0;
+			}
+
+			/*This was the rectangle in the defs (not visible) svg*/
+			.mask__shape {
+			  /*Remember, in a mask, the fill controls how much of the underlying content shows through*/
+			  /*e.g. #ffffff wil block all color, #000000 will be transparent.*/
+			  fill: #fff;
+
+			}
+
+			/*This makes the text part "see-through" to the video*/
+			.mask__text {
+			  fill: #000;
+			  
+			}
+
+			/*This controls the 'fill' color of the mask itself.*/
+			.shape--fill-a {
+			  fill: rgba(65, 149, 211, 1);
+			  width: 100%;
+			}
+			.shape--fill-b {
+			  fill: rgba(112, 111, 114, 1);
+			}
+			.shape--fill-c {
+			  fill: rgba(255, 213, 25, 1);
+			}
+
+<svg  class="vid-defs">
+			<!-- Symbol with text -->
+			<!--"symbols can have a viewbox attribute, where g elements inside a def cannot...therefore, symbol is probably better for reusing shapes - (Jenkov)"-->
+			 <symbol id="s-text-vid">
+				<text text-anchor="middle"
+					  x="50%"
+					  y="50%"
+					  dy=".35em"
+					  class="text"
+					  font-size="4em"
+					  >
+				  Every Journey
+				</text>
+			 </symbol>
+			 <!-- Mask with text -->
+			 <!-- Here, we are defining the mask that we will reference later in the css to clip the video -->
+			  <mask id="m-text-vid"
+					maskunits="userSpaceOnUse"
+					maskcontentunits="userSpaceOnUse">
+					<!--This will define the "shape" of the mask - a rectangle -->
+					<!--In CSS, its 'fill' will control the mask transparency-->
+					<rect
+						  width="100%"
+						  height="100%"
+						  class="mask__shape">
+					</rect>
+					<!-- This defines a path inside the mask - the text above -->
+					<use xlink:href="#s-text-vid"
+						 class="mask__text">
+					</use>
+			  </mask>
+
+			
+			  
+		</svg>
+
+<svg viewBox="0 0 100 100"
+					   class="svg-inverted-mask"
+					   xmlns="http://www.w3.org/2000/svg"
+					   xmlns:xlink="http://www.w3.org/1999/xlink">
+					   <defs>
+							<linearGradient id="faderight"
+								x1="0%" y1="0%"
+								x2="100%" y2="0%"
+								spreadMethod="pad"
+							>
+							<!-- spreadMethod is only relevant if the gradient does not cover the whole shape -->
+							  <stop offset="0%" stop-color="#f1f" stop-opacity="1"/>
+							  <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
+							</linearGradient>
+
+							<mask id="fademask">
+							  <circle cx="50" cy="45" r="10" style="stroke:none; fill: url(#faderight)" />
+							</mask>
+					   </defs>
+					<!--This rect is the base of the mask - its color will define the overlay color.-->
+					<!-- <rect
+						  width="100%"
+						  height="100%"
+						  mask="url(#m-text-vid)"
+						  class="shape--fill-a"/> -->
+					<!--This is here to keep the text selectable.
+					<use xlink:href="#s-text-vid"
+						 class="text--transparent">
+					</use>
+					-->
+					<image x="40" y="35" width="20" height="20" 
+						 xlink:href="./assets/app-icon-rs.png" 
+						 mask="url(#fademask)" />
+					
+				  </svg> 
