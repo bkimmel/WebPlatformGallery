@@ -43,9 +43,10 @@
 				spreadMethod="pad"
 		    >
 		    <!-- spreadMethod is only relevant if the gradient does not cover the whole shape -->
-		      <stop offset="0%" stop-color="#000" stop-opacity="1"/>
-		      <stop offset="100%" stop-color="#000" stop-opacity="1"/>
-		      <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
+		    <!-- <stop> need closing </stop> apparently -->
+		      <stop offset="0%" stop-color="#000" stop-opacity="1"></stop>
+		      <stop offset="100%" stop-color="#000" stop-opacity="1"></stop>
+		      <stop offset="100%" stop-color="#fff" stop-opacity="1"></stop>
 		    </linearGradient>
 		    <mask id="fademask" width="40" height="40">
 		      <circle cx="50" cy="50" r="15" style="stroke:none; fill: url(#faderight)" />
@@ -54,7 +55,7 @@
 		  <image x="35" y="35" width="30" height="30" 
 			 xlink:href="./app-icon-rs.png" 
 			 style="mask: url(#fademask)" />
-		   <text y="20%" x="20%" font-size=".5em">Circle w gradient</text>
+		   <text y="20%" x="20%" font-size=".5em">Anim. gradient (click)</text>
 		</svg>
         <!-- <script src="scripts/main.js"></script> -->
         <script>
