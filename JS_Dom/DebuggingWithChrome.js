@@ -6,6 +6,8 @@ monitor(thefunction);
 
 //When, how, why is this function screwing up?
 debug(thefunction);
+	//OK, but how the hell did this function even get called?
+	console.trace();
 
 //What is wrong with this Event Handler?  Is it even getting called at all?
 getEventListeners(document);
@@ -22,5 +24,4 @@ profileEnd('This part.');
 //What's the deal with this DOM object?
 inspect(document.querySelector('#mydiv'));
 
-//How the hell did this function even get called?
-console.trace();
+
