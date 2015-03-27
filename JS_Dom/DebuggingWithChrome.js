@@ -1,6 +1,10 @@
 //What the hell is happening to this object and why?
 Object.observe(thobjectinquestion, function(change){ console.log(change); debugger; });
 
+//How is that object even getting there in the first place?
+Object.defineProperty(window, 'weirdobject', { set: function(v){ console.trace(); } });
+  //This will kind of only work once, but it will show what puts 'weirdobject' there
+
 //When is this function even getting called?
 monitor(thefunction);
 
