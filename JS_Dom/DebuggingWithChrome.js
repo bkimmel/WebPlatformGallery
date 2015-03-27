@@ -30,6 +30,7 @@ profileEnd('This part.');
 inspect(document.querySelector('#mydiv'));
 
 //What is messing with this DOM object?
-  //--> Go to 'elements' --> Right click the element in question --> Select 'break on subtree modifications' or 'break on attribute modifications' --> Type console.trace() when you get to the break.
+  //--> Go to 'elements' --> Right click the element in question --> Select 'break on subtree modifications' or 'break on attribute modifications' -->  Type console.trace() when you get to the break.
 
-
+//I'm keeping my eye on you, mister Precondition:
+console.assert(precondition == true, "Precondition not met")
