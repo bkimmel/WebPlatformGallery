@@ -22,6 +22,7 @@ getEventListeners(document.querySelector('#mydiv'));
 
 //Why is this part of the code going so slow or taking so long?
 profile('This part');
+//code
 profileEnd('This part.');
 //then check in the code profiler
 
