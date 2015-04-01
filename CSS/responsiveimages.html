@@ -1,0 +1,20 @@
+<!-- http://blog.cloudfour.com/responsive-images-101-part-3-srcset-display-density/ -->
+
+<!-- Now: -->
+<img src="cat.jpg" srcset="cat.jpg, cat-2X.jpg 2x, cat-3x.jpg 3x, cat-16x.jpg 16x">
+<!-- The value before the X is the density descriptor ... i.e. if the browser displays at 2X density (Retina), it will pick cat-2X.jpg instead of cat.jpg -->
+
+<!-- Near Future: -->
+<!-- Width descriptors: Browser pick the image that best fits the width... -->
+<img src="cat.jpg" alt="cat" 
+  srcset="cat-160.jpg 160w, cat-320.jpg 320w, cat-640.jpg 640w, cat-1280.jpg 1280w">
+  <!-- Problem: It has to do this before it has downloaded CSS (which is the only way it could know which width it needs...)  This only works well for images that are roughly the width of the viewport... -->
+ 
+<!-- Solution: sizes allows you to apply media rules (like media queries) to the image and direct the browser to which one it should take ... not currently supported in Safari-->
+<img src="cat.jpg" alt="cat"
+  srcset="cat-160.jpg 160w, cat-320.jpg 320w, cat-640.jpg 640w, cat-1280.jpg 1280w"
+  sizes="(max-width: 480px) 100vw, (max-width: 900px) 33vw, 254px">
+<!-- Order of operations: Browser starts by going through the sizes list and matching the viewport state to the media rules ... if it's less than 480px the browser can know it will be 100vw - or 100% the width of the viewport... say it's viewport is 320px:
+it will pick cat-320 because it's the image that best fits the size.
+ -->  
+ 
