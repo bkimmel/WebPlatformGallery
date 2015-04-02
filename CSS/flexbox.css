@@ -1,0 +1,138 @@
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    height: 30vh;
+    border: 2px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 5px auto;
+    background-color: hsla(0,50%,0%,.2);
+
+}
+
+/*Basic centering of stuff: nothing fancy*/
+.flexcontainer_a {
+    display: flex;
+}
+.flexcontainer_a .item{
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+
+/* flex-basis gives the flex items a "basic" width, like an inline-block element;*/
+.flexcontainer_b {
+    display: flex;
+}
+.flexcontainer_b .item{
+    flex-basis: 80px;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+
+
+.flexcontainer_c {
+    display: flex;
+}
+/* flex-grow instructs the items to "spread out" in the container relative to their "flex-grow" and "flex-basis" value*/
+.flexcontainer_c .item{
+    flex-grow: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+/* i.e. the 2nd child here grows at twice the rate of the other flex items*/
+.flexcontainer_c .item:nth-child(2){
+    flex-grow: 2;
+}
+
+.flexcontainer_d {
+    display: flex;
+}
+/* flex-shrink instructs the items to "fit in" to the container relative to their "flex-shrink" and "flex-basis" value*/
+.flexcontainer_d .item{
+    flex-basis: 50%;
+    flex-shrink: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+/* i.e. the 2nd child here takes twice the size of the other flex items*/
+.flexcontainer_d .item:nth-child(2){
+    flex-shrink: 2;
+}
+
+.flexcontainer_e {
+    display: flex;
+}
+/* the flex shorthand takes flex-grow flex-shrink flex-basis*/
+.flexcontainer_e .item{
+    flex: 1 1 200px;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+/* i.e. the 2nd child here grows at twice the rate of the other flex items*/
+.flexcontainer_e .item:nth-child(2){
+    flex: 2 1 200px;
+}
+
+.flexcontainer_f {
+    display: flex;
+}
+/* the flex shorthand with 1 param just indicates the ratio of size the item takes*/
+.flexcontainer_f .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+/* i.e. the 2nd child here is twice as large as the other flex items*/
+.flexcontainer_f .item:nth-child(2){
+    flex: 2;
+}
+
+.flexcontainer_g {
+    display: flex;
+    /*flex-direction tells the container how to lay out its items: column is up-and-down*/
+    flex-direction: column;
+}
+.flexcontainer_g .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+.flexcontainer_g .item:nth-child(2){
+    flex: 2;
+}
+
+
+.flexcontainer_h {
+    display: flex;
+    /*flex-direction tells the container how to lay out its items: row-reverse reverses the order of the items*/
+    flex-direction: row-reverse;
+}
+.flexcontainer_h .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+}
+.flexcontainer_h .item:nth-child(2){
+    flex: 2;
+}
+
+
+.flexcontainer_i {
+    display: flex;
+    flex-direction: row;
+}
+.flexcontainer_i .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+}
+.flexcontainer_i .item:nth-child(2){
+    flex: 2;
+    order: 2;
+}
