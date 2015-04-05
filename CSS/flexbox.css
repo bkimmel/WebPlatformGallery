@@ -10,12 +10,19 @@ body {
     border: 2px solid black;
     padding: 10px;
     box-sizing: border-box;
-    margin: 5px auto;
+    margin: 4em auto;
     background-color: hsla(0,50%,0%,.2);
-
+    position: relative;
 }
 
 /*Basic centering of stuff: nothing fancy*/
+.flexcontainer_a:after {
+    display: block;
+    position: absolute;
+    top: -2em;
+    left: 0;
+    content: "Basic centering of stuff: nothing fancy";
+}
 .flexcontainer_a {
     display: flex;
 }
@@ -134,5 +141,130 @@ body {
 }
 .flexcontainer_i .item:nth-child(2){
     flex: 2;
+    /*You can manually set the order of elements in style with: order*/
     order: 2;
+}
+
+.flexcontainer_j {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap allows items to "wrap" to the next block down when they hit their min-width*/
+    flex-wrap: wrap;
+}
+.flexcontainer_j .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    min-width: 40%;
+}
+
+
+.flexcontainer_k {
+    display: flex;
+    /* flex-flow is shorthand for: [flex-direction] [flex-wrap]*/
+    flex-flow: row wrap-reverse;
+}
+.flexcontainer_k .item{
+    flex: 1;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    min-width: 40%;
+}
+
+.flexcontainer_l {
+    display: flex;
+    flex-flow: column wrap;
+    height: 600px;
+    /*align-content gives direction about how to handle "extra space" on the "cross-axis"" vector - for "column" direction left-to-right, top-to-bottom for row*/
+    /*i.e. "After you have grown/shrunk the contents as much as you can around the box-model properties (width, max-width, min-width, height, ma-height, etc.) - do this with the left-over space" */
+    /*try: flex-start, flex-end, space-around, space-between, stretch (default), center*/
+    align-content: center;
+}
+.flexcontainer_l .item{
+    flex: 1 0 auto;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    display: inline-block;
+    max-width: 60%;
+    width: 20%;
+    height: 200px;
+}
+
+.flexcontainer_m {
+    display: flex;
+    flex-flow: row wrap;
+    height: 600px;
+    align-content: center;
+    /*justify-content instructs the flex-box how to distribute items across the main axis*/
+     /*try: flex-start, flex-end, space-around, space-between, stretch (default), center*/
+    justify-content: center;
+}
+.flexcontainer_m .item{
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    display: inline-block;
+    max-width: 40%;
+    width: 60%;
+    height: 100px;
+}
+
+.flexcontainer_n {
+    display: flex;
+    flex-flow: row wrap;
+    height: 600px;
+    /*align-items instructs flexbox where to place the items on the cross-axis */
+    align-items: center;
+    justify-content: center;
+}
+.flexcontainer_n .item{
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    padding: .5em;
+    max-width: 10em;
+    display: inline-block;
+}
+
+.flexcontainer_o {
+    display: flex;
+    flex-flow: row wrap;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+}
+.flexcontainer_o .item{
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    padding: .5em;
+    max-width: 10em;
+    display: inline-block;
+}
+.flexcontainer_o .item:nth-child(2) {
+    /*Align self allows an individual item to override the align-items intruction from its container. */
+    align-self: flex-end;
+}
+
+
+.flexcontainer_p {
+    display: flex;
+    flex-flow: row wrap;
+    height: 600px;
+    align-items: center;
+    justify-content: center;
+}
+.flexcontainer_p .item{
+    display: flex;
+    background-color: hsla(0,50%,0%,.2);
+    margin: 2px;
+    order: 1;
+    padding: .5em;
+    max-width: 15em;
+    display: inline-block;
+    /*flex properties do not take over for normal css layout instructions for inline content, like text-align: center, as you can see here.*/
+    align-content: center;
 }
