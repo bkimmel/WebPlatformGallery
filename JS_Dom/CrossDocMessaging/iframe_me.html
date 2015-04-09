@@ -12,7 +12,8 @@
 	<script>
 		document.querySelector('h2').addEventListener('click', function(){
 			console.log('hi');
+			parent.postMessage('hi', '*');
 		});
-		window.postMessage('hi', '*');
+		
 	</script>
 </html>
