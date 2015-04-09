@@ -15,7 +15,7 @@
 		<iframe width="100%" src="iframe_me.html"></iframe>
 	</body>
 	<script>
-		document.querySelector('iframe').addEventListener('message', function(){ console.log('message'); });
-		window.addEventListener('message', function(){ console.log('window message'); });
+		document.querySelector('iframe').addEventListener('message', function(){ console.log('window message'); });
+		window.addEventListener('message', function(){ console.log('parent message'); });
 	</script>
 </html>
