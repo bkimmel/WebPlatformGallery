@@ -3,8 +3,12 @@ SVG Masks
   //Mask is an advanced version on Clippath:  Clippath is like "cutting" a shape out with scissors and showing just that shape.
   //Mask is similar, but it allows you to control opacity and add patterns, etc.
 SVG Patterns
+  //http://tutorials.jenkov.com/svg/fill-patterns.html
+  //pretty basic - just allows you to repeat things..
+  //interesting tactic: you can embed an inner pattern in an outer pattern
 SVG Blendshift Cycling
 Node Buffers
+  //https://docs.nodejitsu.com/articles/advanced/buffers/how-to-use-buffers
 Service Workers
 Web Push Notifications
 Isometric Illustration
