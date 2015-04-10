@@ -34,3 +34,11 @@ inspect(document.querySelector('#mydiv'));
 
 //I'm keeping my eye on you, mister Precondition:
 console.assert(precondition == true, "Precondition not met")
+
+//break on failed assert:
+function assertstop() {
+	var args = Array.prototype.slice.call(arguments);
+	return args.filter(function(v){ return !v; }).length ? (function(){ debugger; })() : true;
+}
+assertstop(1 === 1, 0 === 0); //nothing
+assertstop(true, true, false); //breaks and allows you to inspect (use console.trace to go back through the stack and see where it failed)
