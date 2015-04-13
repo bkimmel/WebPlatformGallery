@@ -9,6 +9,7 @@ SVG Patterns
 SVG Blendshift Cycling
 Node Buffers
   //https://docs.nodejitsu.com/articles/advanced/buffers/how-to-use-buffers
+  //Fixed arrays of bytes for dealing with binary info quickly.
 Service Workers
 Web Push Notifications
 Isometric Illustration
