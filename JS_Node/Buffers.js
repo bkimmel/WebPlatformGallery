@@ -44,5 +44,11 @@ console.log('buffer: ', buffer); //=> 49,27,6D ...
 console.log('buffer utf-8: ', buffer.toString('utf-8')); //=> I'm a striñg 
 console.log('\n');
 
+var buffer = new Buffer("I'm a string!", 'utf-8');
+console.log('New buffer: "I\'m a string"');
+console.log('slice with .toString:', buffer.toString('utf-8', 6, 12));
+buffer[0] = buffer[12];
+console.log(buffer.toString('utf-8'));
+
 
 
