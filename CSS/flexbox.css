@@ -15,12 +15,21 @@ body {
     position: relative;
 }
 
+.container:before {
+    display: block;
+    position: absolute;
+    top: -2em;
+    left: 0;
+    content: attr(data-letter);
+}
+
+
 /*Basic centering of stuff: nothing fancy*/
 .flexcontainer_a:after {
     display: block;
     position: absolute;
     top: -2em;
-    left: 0;
+    right: 0;
     content: "Basic centering of stuff: nothing fancy";
 }
 .flexcontainer_a {
@@ -66,7 +75,7 @@ body {
     background-color: hsla(0,50%,0%,.2);
     margin: 2px;
 }
-/* i.e. the 2nd child here takes twice the size of the other flex items*/
+/* i.e. the 2nd child here sheds twice the size of the other flex items*/
 .flexcontainer_d .item:nth-child(2){
     flex-shrink: 2;
 }
