@@ -209,15 +209,14 @@ body {
     align-content: center;
     /*justify-content instructs the flex-box how to distribute items across the main axis*/
      /*try: flex-start, flex-end, space-around, space-between, stretch (default), center*/
-    justify-content: center;
+    justify-content: space-between;
 }
 .flexcontainer_m .item{
     background-color: hsla(0,50%,0%,.2);
     margin: 2px;
     order: 1;
     display: inline-block;
-    max-width: 40%;
-    width: 60%;
+    min-width: 40%;
     height: 100px;
 }
 
