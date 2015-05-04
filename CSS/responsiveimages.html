@@ -24,3 +24,40 @@ it will pick cat-320 because it's the image that best fits the size.
 <!-- When going through the sizes, the browser works like so:  "Is the screen size under 480px iw width?  Then the image will be 100vw wide...
 If not, and it's under 900px then it's 33vw wide.  Otherwise it's 254px wide." -->
  
+ 
+ <!-- 
+ There will be times when we want to adapt our images in ways that go beyond scaling. 
+ When we do, we need to snatch some of that source-picking control right back. 
+ 
+ Enter picture.
+ -->
+ <!--
+ A picture element contains any number of source elements and one img.
+ The browser goes over the picture’s sources until it finds one whose media attribute matches the current environment.
+ It sends that matching source’s srcset to the img, which is still the element that we “see” on the page.
+ -->
+ <picture>
+	<source media="(orientation: landscape)" srcset="landscape.jpg" />
+	<img src="portrait.jpg" alt="A rad wolf." />
+</picture>
+
+<!-- A more complex example: -->
+<picture>
+	<!-- 16:9 crop -->
+	<source
+		media="(min-width: 36em)"
+		srcset="quilt_2/detail/large.jpg  1920w,
+		        quilt_2/detail/medium.jpg  960w,
+		        quilt_2/detail/small.jpg   480w" />
+	<!-- square crop -->
+	<source
+		srcset="quilt_2/square/large.jpg  822w,
+		        quilt_2/square/medium.jpg 640w,
+		        quilt_2/square/small.jpg  320w" />
+	<img
+		src="quilt_2/detail/medium.jpg"
+		alt="Detail of the above quilt, highlighting the embroidery and exotic stitchwork." />
+</picture>
+
+
+ 
