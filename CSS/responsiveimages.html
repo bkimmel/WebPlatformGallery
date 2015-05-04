@@ -1,11 +1,15 @@
 <!-- http://blog.cloudfour.com/responsive-images-101-part-3-srcset-display-density/ -->
-
+<!-- http://alistapart.com/article/responsive-images-in-practice -->
 <!-- Now: -->
 <img src="cat.jpg" srcset="cat.jpg, cat-2X.jpg 2x, cat-3x.jpg 3x, cat-16x.jpg 16x">
 <!-- The value before the X is the density descriptor ... i.e. if the browser displays at 2X density (Retina), it will pick cat-2X.jpg instead of cat.jpg -->
 
 <!-- Near Future: -->
 <!-- Width descriptors: Browser pick the image that best fits the width... -->
+<!--  After each URL we include a “width descriptor,” which specifies each image’s pixel width. 
+Is your image 1024 x 768? Stick a 1024w after its URL in srcset. 
+srcset-aware browsers use these pixel widths and everything else that they know about the current 
+browsing environment to pick a source to load out of the set. -->
 <img src="cat.jpg" alt="cat" 
   srcset="cat-160.jpg 160w, cat-320.jpg 320w, cat-640.jpg 640w, cat-1280.jpg 1280w">
   <!-- Problem: It has to do this before it has downloaded CSS (which is the only way it could know which width it needs...)  This only works well for images that are roughly the width of the viewport... -->
@@ -17,4 +21,6 @@
 <!-- Order of operations: Browser starts by going through the sizes list and matching the viewport state to the media rules ... if it's less than 480px the browser can know it will be 100vw - or 100% the width of the viewport... say it's viewport is 320px:
 it will pick cat-320 because it's the image that best fits the size.
  -->  
+<!-- When going through the sizes, the browser works like so:  "Is the screen size under 480px iw width?  Then the image will be 100vw wide...
+If not, and it's under 900px then it's 33vw wide.  Otherwise it's 254px wide." -->
  
