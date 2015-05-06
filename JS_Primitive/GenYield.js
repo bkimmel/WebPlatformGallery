@@ -8,6 +8,7 @@ function* foo(){
                      // and its value will be undefined;
     console.log('foo to yield'), yield index++ + '#' + a;
 	//The 'yield' keyword is like 'return' for generators
+	//It's like 'yield the callstack back to the caller and wait for them to "next" me again'
   console.log('foo finished');
   //implicit yield undefined, done: true here
 }
@@ -19,3 +20,31 @@ console.log(iterator.next()); //logs: foo to yield, logs {value: '1#2', done: fa
 console.log(iterator.next()); //logs: foo to yield, logs {value: '2#2', done: false}
 console.log(iterator.next()); //logs: foo to finished, logs {value: undefined, done: false}
 //notice on the last one, it does not log 'foo to yield'
+
+function* g1() {
+  yield 2;
+  yield 3;
+  yield 4;
+}
+
+function* g2() {
+  yield 1;
+  //yield* is like "yield to" or "yield forward"
+  //when this generator is 'nexted', it will yield the stack to g1
+  //...until g1 itself yields 'done', at which case it will continue down its own stack
+  yield* g1();
+  yield 5;
+  //You can also 'yield to' arrays and other objects
+  yield* [6,'7'];
+}
+
+var iterator = g2();
+
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+console.log(iterator.next()); // { value: 5, done: false }
+console.log(iterator.next()); // { value: 6, done: false }
+console.log(iterator.next()); // { value: '7', done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
