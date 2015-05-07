@@ -48,3 +48,19 @@ console.log(iterator.next()); // { value: 5, done: false }
 console.log(iterator.next()); // { value: 6, done: false }
 console.log(iterator.next()); // { value: '7', done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
+
+
+//yielding promises:
+function* g3() {
+	var p = new Promise(function(res, rej){
+		setTimeout(function(){ res(1); }, 4000);
+	});
+	yield p;
+}
+
+function* g4() {
+	yield* g3();
+}
+
+var iterator = g4();
+iterator.next().value.then(function(a){ console.log(a); });
