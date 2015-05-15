@@ -5,7 +5,6 @@ Object.observe(thobjectinquestion, function(change){ console.log(change); debugg
 //In Chrome Event Listener Breakpoints -> Script -> First Script Load
 Object.defineProperty(window, 'weirdobject', { set: function(v){ debugger; window.weirdobject_cache = v; }, get: function(){ return window.weirdobject_cache; } });
   
-
 //When is this function even getting called?
 monitor(thefunction);
 
@@ -17,9 +16,11 @@ debug(thefunction);
 //What is wrong with this Event Handler?  Is it even getting called at all?
 getEventListeners(document);
 getEventListeners(document.querySelector('#mydiv'));
+//Also, in elements panel - look at the top-right tab labeled "event handlers" and it will display all bubblable handlers for the element
 
 	//OK, but this event handler is just a bunch of weird jQuery stuff... Where is the function it's actually calling?
 	jQuery._data( document.querySelector('#mydiv'), "events" );
+	//mayb in old jQuery => jQuery('#mydiv').data('events')
 
 //Why is this part of the code going so slow or taking so long?
 profile('This part');
