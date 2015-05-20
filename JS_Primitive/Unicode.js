@@ -14,6 +14,8 @@ console.log( '\u2661' ); //=> (Heart Symbol).
 //console.log( '\u{1F4A9}' );
   //Can be used to address supplementary symbols bigger than +00FFFF that plain \u allows.
 
+  
+//[On UTF:] To enable this encoding scheme, the BMP has a hole with unused code points whose range is 0xD800–0xDFFF. Therefore, the ranges of leading surrogates, trailing surrogates, and BMP code points are disjoint -Rauschmeyer (speakingjs.com)
 //ES5 Supplementaries over FFFF: Surrogate Pairs:
 var cow = '\uD83D\uDC04'; //=> 0x1F404: (Symbol for a cow)
 console.log(cow); 
@@ -28,7 +30,7 @@ console.log('man\u0303ana'); //=> Here +0303 is a "combining" symbol that create
 var str = 'man\u0303ana';
 console.log(str.split('').reverse().join('')); //This will screw everything up.
 
-//Workaround: Math things with this and 'flip' them before you reverse the string
+//Workaround: Match things with this and 'flip' them before you reverse the string
 var regexSymbolWithCombiningMarks = /([\0-\u02FF\u0370-\u1DBF\u1E00-\u20CF\u2100-\uD7FF\uDC00-\uFE1F\uFE30-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF])([\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F]+)/g;
 console.log( 'man\u0303ana'.match(regexSymbolWithCombiningMarks) );
 console.log( 'man\u0303ana'.replace(regexSymbolWithCombiningMarks, function(match, symbol, combiner){ return combiner + symbol }).split('').reverse().join('') );
