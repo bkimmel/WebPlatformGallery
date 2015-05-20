@@ -23,6 +23,13 @@ console.log(cow.length); //Even though it shows up as one character, it has a le
 
 console.log('\uD835\uD800'); //=> 1D400 => Math Bold A
 
+//Math of Surrogate Pair Creation:
+ //So for 0x1D400.toString(2) == 11101010000000000
+ //1.  Subtract 0x100000 from it (i.e. -1 at the 17th bit): ( 0x1D400 - 0x10000 ).toString(2) == 1101010000000000
+ //2.  Take the *most significant* 10 bits from it and prefix those with 0xD800: var leadingSurrogate = 0xD800 | ( ( 0x1D400 - 0x10000 ) >> 10);
+ //3.  Take the *least significant* 10 bits and prefix with 0xDC00: var trailingSurrogate = 0xDC00 | (( 0x1D400 - 0x10000 ) & parseInt('1111111111',2) );
+ //4.  Surrogate Pair == '\\u' + leadingSurrogate.toString(16).toUpperCase() + '\\u' + trailingSurrogate.toString(16).toUpperCase() //=> \d835
+ 
 //ES6 Only:
 //Array.from('\uD83D\uDC04').length //Will count the symbol only once in the length.
 
@@ -42,4 +49,9 @@ console.log(String.fromCharCode(0xD835, 0xD800)); //=> Math Bold A (1D400)
 
 //General notes: in Node, especially for Request lengths, always use Buffer lengths and not string lengths.
   //Always account for Supplementary symbols whenever counting or slicing symbols from uncontrolled sources.
+  
+
+//In Source: In identifiers, string literals, and regular expression literals, any code unit can also be expressed via a Unicode escape sequence \uHHHH, where HHHH are four hexadecimal digits. - Rausch.
+  var f\u006F\u006F = 'abc';
+  foo //=> 'abc'
 
