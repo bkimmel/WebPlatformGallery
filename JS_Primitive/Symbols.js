@@ -13,6 +13,7 @@ console.log('sym === symb: %b', sym === symb); //=> sym === symb: %b false
 //symbol is its own primitive type:
 console.log('typeof sym: %s', typeof sym); //=> typeof sym: symbol
 
+//symbols can be used as object keys
 const MY_KEY = Symbol();
 var obj = {};
 
