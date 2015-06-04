@@ -13,6 +13,14 @@ console.log('sym === symb: %b', sym === symb); //=> sym === symb: %b false
 //symbol is its own primitive type:
 console.log('typeof sym: %s', typeof sym); //=> typeof sym: symbol
 
+//There are two basic ways to declare symbols:
+//The first is just like above and creates a unique object.
+var sym = Symbol('abc');
+//The second is to use Symbol.for(str), which adds it to the 'Global Symbol Registry' with the key of str.
+//This key can translate across global execution objects.
+var symabc = Symbol.for('abc');
+console.log('symabc === Symbol.for(\'abc\'): %b', symabc === Symbol.for('abc')); //=> symabc === Symbol.for('abc'): %b true
+
 //symbols can be used as object keys
 const MY_KEY = Symbol();
 var obj = {};
