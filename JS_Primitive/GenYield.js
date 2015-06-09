@@ -77,3 +77,13 @@ b = 2 + (a = 3);        // valid
 yield 3;                // valid
 a = 2 + yield 3;        // invalid
 a = 2 + (yield 3);      // valid
+
+//generator "recursion"
+function *foo(x) {
+    if (x < 3) {
+        x = yield *foo( x + 1 );
+    }
+    return x * 2;
+}
+
+foo( 1 ).next(); //=> {value: 24} == ( (3 * 2) * 2 ) * 2
