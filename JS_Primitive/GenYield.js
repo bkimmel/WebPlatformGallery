@@ -64,3 +64,16 @@ function* g4() {
 
 var iterator = g4();
 iterator.next().value.then(function(a){ console.log(a); });
+
+
+//Technically yield .. is of the same “expression precedence” --similar conceptually to operator precedence — as an assignment expression like a = 3.
+//That means yield .. can basically appear anywhere a = 3 can validly appear.
+var a, b;
+
+a = 3;                  // valid
+b = 2 + a = 3;          // invalid
+b = 2 + (a = 3);        // valid
+
+yield 3;                // valid
+a = 2 + yield 3;        // invalid
+a = 2 + (yield 3);      // valid
