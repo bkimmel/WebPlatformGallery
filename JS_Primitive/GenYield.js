@@ -64,3 +64,17 @@ function* g4() {
 
 var iterator = g4();
 iterator.next().value.then(function(a){ console.log(a); });
+
+//parallel operations with generators:
+function *foo() {
+	while(true) {
+		yield Promise.all([new Promise(function(res, rej){
+			setTimeout(function(){ res('3 second Promise Resolved'); }, Math.random * 3000);
+		}), new Promise(function(res, rej){
+			setTimeout(function(){ res('10 second Promise Resolved'); }, Math.random * 10000);
+		})]);
+	}
+}
+
+var it = foo();
+it.next().value.then(function(v){ console.log('%O',v) });
