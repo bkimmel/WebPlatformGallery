@@ -18,3 +18,13 @@ Line two ${message_a()}
 Line 3 ${message_b(`${message_a()}`)}`;
 
 console.log(mymessage);
+
+//It consumes scope of where it is declared:
+var myname = 'Kimmel';
+
+//Template strings use these backticks: ` and ${expression} to evaluate
+var greet = `Hello ${myname}`
+console.log(greet); //=> Hi Kimmel
+myname = 'Brent';
+console.log(greet); //=> Hi Kimmel, because that's how it was bound before...
+console.log(`Hello ${myname}`); //=> Hi Brent

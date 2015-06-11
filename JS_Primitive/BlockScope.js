@@ -27,3 +27,8 @@ console.log( a );       // 2
     var a;
     let b;
 }
+
+//Compare to ES5, where you would have to make IIFEs (i.e. a here would be 0 10 times)
+for(let a = 10; a > 0; a--) {
+	setTimeout(function(){ console.log(a); }, 100);
+}
