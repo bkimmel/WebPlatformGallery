@@ -78,3 +78,26 @@ function *foo() {
 
 var it = foo();
 it.next().value.then(function(v){ console.log('%O',v) });
+
+//Promises resolvers to normal functions:
+function bar(res, rej) {
+	setTimeout(function(){ res('aaa'); }, 500);
+}
+
+function baz(res, rej) {
+	setTimeout(function(){ res('bbb'); }, 1000);
+}
+
+function *coll() {
+	var par = [];
+	par.push(new Promise(function(res, rej){
+		bar(res, rej);
+	}));
+	par.push(new Promise(function(res, rej){
+		baz(res, rej);
+	}));
+	yield Promise.all(par);
+}
+var it = coll();
+it.next().value.then(function(v){ console.log(v); });
+
