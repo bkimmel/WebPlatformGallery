@@ -69,9 +69,9 @@ iterator.next().value.then(function(a){ console.log(a); });
 function *foo() {
 	while(true) {
 		yield Promise.all([new Promise(function(res, rej){
-			setTimeout(function(){ res('3 second Promise Resolved'); }, Math.random * 3000);
+			setTimeout(function(){ res('3 second Promise Resolved'); }, Math.random() * 3000);
 		}), new Promise(function(res, rej){
-			setTimeout(function(){ res('10 second Promise Resolved'); }, Math.random * 10000);
+			setTimeout(function(){ res('10 second Promise Resolved'); }, Math.random() * 10000);
 		})]);
 	}
 }
