@@ -32,3 +32,7 @@ console.log(obj[MY_KEY]); // 123
 var a = Symbol('a');
 a.foo = 3; //=> 3
 a.foo; //=> undefined
+
+console.log( String(a) + 'string' + a.toString() )//=> They can be explicitly cast
+a + 'string'; //=> TypeError: But they are finnicky - no coercion
+
