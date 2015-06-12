@@ -27,3 +27,8 @@ var obj = {};
 
 obj[MY_KEY] = 123;
 console.log(obj[MY_KEY]); // 123
+
+//Like other primitives, you cannot assign props/methods:
+var a = Symbol('a');
+a.foo = 3; //=> 3
+a.foo; //=> undefined
