@@ -1,3 +1,9 @@
+/*
+ES6 Adds generators.  They are similar to functions in many respects, except that they return an *iterator* for themselves instead of
+their normal return values.  The iterator advances the function body to the first yield statement, then feeds the result of that back to the caller's next
+and 'pauses' its execution at that point, until 'next' is called again...
+*/
+
 var a = 1;
 //The * marks this as a special generator function, which does not behave as normal ES5 functions do...
 function* foo(){

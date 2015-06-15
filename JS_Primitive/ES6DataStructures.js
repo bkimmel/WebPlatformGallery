@@ -29,7 +29,7 @@ m.set(a, 'other data');
 console.log(m.get(a));
 
 //WeakMaps are increidbly powerful - they do not allow enumeration or clearing of data, so you can only retrieve/change data if you have both the WeakMap and the 'key' object:
-var priv = new WeakMap();
+var priv = new WeakMap();a
 function assoc(k, v) {
 	priv.set(k, v);
 }
