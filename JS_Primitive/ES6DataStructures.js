@@ -22,7 +22,28 @@ var res = 0;
 s2.forEach(function(v){ res += v * 2; }) //=> 18
 console.log(res);
 
+//Maps let you associate data
 var m = new Map();
 var a = {some: 'property'}, b = {some: function(){}};
+m.set(a, 'other data');
+console.log(m.get(a));
+
+//WeakMaps are increidbly powerful - they do not allow enumeration or clearing of data, so you can only retrieve/change data if you have both the WeakMap and the 'key' object:
+var priv = new WeakMap();
+function assoc(k, v) {
+	priv.set(k, v);
+}
+var obj = Object.create(null);
+obj.oneproperty = 1;
+assoc(obj, {bigheavy: 'data'});
+//obj is still super lean...
+for(var i in obj) {
+	console.log(i, '#', obj[i]);
+}
+//But you can retrieve data associated with it from the "private store in public space"
+console.log(priv.get(obj));
+
+
+
 
 
