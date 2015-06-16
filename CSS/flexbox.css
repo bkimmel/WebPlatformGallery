@@ -166,6 +166,7 @@ body {
     margin: 2px;
     order: 1;
     min-width: 40%;
+
 }
 
 
@@ -260,10 +261,11 @@ body {
 
 .flexcontainer_p {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     height: 600px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    text-align: center;
 }
 .flexcontainer_p .item{
     display: flex;
@@ -273,6 +275,5 @@ body {
     padding: .5em;
     max-width: 15em;
     display: inline-block;
-    /*flex properties do not take over for normal css layout instructions for inline content, like text-align: center, as you can see here.*/
     align-content: center;
 }
