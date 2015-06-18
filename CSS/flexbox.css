@@ -268,12 +268,12 @@ body {
     text-align: center;
 }
 .flexcontainer_p .item{
-    display: flex;
     background-color: hsla(0,50%,0%,.2);
     margin: 2px;
-    order: 1;
     padding: .5em;
     max-width: 15em;
     display: inline-block;
-    align-content: center;
+    height: 400px;
+    flex-grow: 1;
+    vertical-align: middle;
 }

@@ -1,0 +1,5 @@
+Talking about filters in CSS and SVG can be a bit confusing: SVG filters are defined in an SVG filter element and are usually applied within an SVG document.
+CSS filters can be applied to any HTML element via the filter property. 
+CSS filters such as blur, contrast and hue-rotate are shortcuts for predefined, frequently used SVG filter effects. 
+Beyond that, the specification allows us to reference user-defined filters from within an SVG. 
+A further point of confusion is the proprietary -ms- filter tag, which was deprecated in Internet Explorer (IE) 9 and removed when IE 10 was released.
