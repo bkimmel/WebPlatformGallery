@@ -1,0 +1,4 @@
+the em is merely the available height of each character’s canvas, and no rules state how much space a character can take up inside that box. We get this invisible box from a time when a type designer quite literally had a physical block upon which to design each letter—when fonts were tools made of metal and wood.
+
+Higher-contrast typefaces tend to be useful in small bursts or headlines, because the extreme variation in stroke width is burdensome in long text. Our eyes are attracted to the exceptions—the stuff that looks different from everything else.
+A typeface with less contrast can create a smooth, welcoming rhythm for reading. Most typefaces intended for long-form text have medium to low contrast, which creates less interplay between the individual letters and words. This gives text a steadier visual rhythm as your eyes move across a line, which in turn aids readability.
