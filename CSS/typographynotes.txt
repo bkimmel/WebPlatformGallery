@@ -2,3 +2,17 @@ the em is merely the available height of each character’s canvas, and no rules s
 
 Higher-contrast typefaces tend to be useful in small bursts or headlines, because the extreme variation in stroke width is burdensome in long text. Our eyes are attracted to the exceptions—the stuff that looks different from everything else.
 A typeface with less contrast can create a smooth, welcoming rhythm for reading. Most typefaces intended for long-form text have medium to low contrast, which creates less interplay between the individual letters and words. This gives text a steadier visual rhythm as your eyes move across a line, which in turn aids readability.
+
+When considering text faces, a high x-height is usually ideal; more space for the letterform means more information to help the reader. This is true of typefaces for print or web, but is of utmost importance where interfaces or wayfinding are a concern. A typeface with healthy strokes and tall x-height can mean the difference between sparse text and one that fills out the space comfortably.
+But a high x-height isn’t always the winning choice. The larger the x-height in a text face, the less room for other distinctive characteristics. For example, the letters a and d, or n and h, can become difficult to distinguish as the x-height increases
+
+Punctuation is a system. That’s why proper quotation marks and apostrophes look like they’re part of the same family as commas, periods, colons, semicolons, and more, whereas straight quotes don’t.
+
+A great way to deal with FOUT is by using Web Font Loader, a framework codeveloped by the engineers at Typekit and Google (http://bkaprt.com/owt/22/). It provides custom webhooks—callback events via CSS and JavaScript—so you can tell your page to use different CSS rules as fonts load, after they load, or if they fail to load.
+
+Divisions in type purpose:
+	1. Type for a Moment
+		For navigation or interface text, I look for typefaces that hold up well at small sizes and aren’t fussy with extra style. More times than not, I narrow it down to a simple sans serif. Let’s look at JAF Facit to see why. It can get very small, but it remains clear and legible because of its large, open counters and simple construction. Compare that with Futura or Zapfino (FIG 4.2). Either could work when used sparingly in a headline, but they both appear fussy as navigational text. They also take up more space. The strict simplicity of Futura’s letterforms makes some letters hard to tell apart (for instance, the lowercase a and o look very similar), not to mention the tight spacing and small x-height. And Zapfino is a bit too decorative at the expense of legibility.
+		
+	2. Type to Live With
+		Typefaces for longer reading should give a page an even texture. The texture of flowing text is the sum of the typeface’s color (the general combinations of lights and darks in and around letters), the actual color of the text and its contrast with the background, and the size of the setting. You can see what I mean by blurring your eyes while looking at a chunk of text. If you see repeating patterns of weird letterforms that keep sticking out to you, the typeface may not be right. We’ll look at typographic color in Chapter 6, but the general guideline is that a reader shouldn’t notice the type. They shouldn’t stop or stumble over the text, or wonder why something looks the way it does. Because when a reader notices the type, they’re taken out of the act of reading and are instead trying to decode why something else is calling attention to itself.
