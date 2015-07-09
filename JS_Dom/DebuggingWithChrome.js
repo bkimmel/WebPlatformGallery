@@ -1,3 +1,5 @@
+
+
 //What the hell is happening to this object and why?
 Object.observe(thobjectinquestion, function(change){ console.log(change); debugger; });
 
@@ -21,6 +23,10 @@ getEventListeners(document.querySelector('#mydiv'));
 	//OK, but this event handler is just a bunch of weird jQuery stuff... Where is the function it's actually calling?
 	jQuery._data( document.querySelector('#mydiv'), "events" );
 	//mayb in old jQuery => jQuery('#mydiv').data('events')
+	//From inside the handler function, if necessary:
+	debug( it.event.handlers );
+		//inside handlers:
+		t; //The t object (2nd arg in it.event.handlers function) holds the list of handlers
 
 //Why is this part of the code going so slow or taking so long?
 profile('This part');
