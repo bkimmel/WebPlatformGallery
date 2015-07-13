@@ -6,10 +6,6 @@ svg {
     margin: 20px auto;
 }
 
-svg.defs {
-    visibility: hidden;
-    position: absolute;
-}
 
 .filtertest.base rect {
     fill: red;
