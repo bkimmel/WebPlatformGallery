@@ -289,14 +289,14 @@ body {
     background-color: hsla(0,50%,0%,.2);
     margin: 2px;
     padding: .5em;
-    max-width: 15em;
+    max-width: 30em;
+    min-width: 10em;
     display: inline-block;
     flex: 1;
-    vertical-align: middle;
 }
 
 .flexcontainer_q .item:nth-child(2) {
     /*Align self allows an individual item to override the align-items intruction from its container. */
     flex: 2;
-    flex-basis: 100%;
+    
 }

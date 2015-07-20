@@ -25,4 +25,21 @@ if(!imgentry || !imgentry.duration || imgentry.duration > 1200) {
   return false;
 }
 
+//You can also use named events from the Performance model, like 'domInteractive':
+window.performance.measure('received','requestStart','responseEnd');
+window.performance.measure('interactive','requestStart','domInteractive');
+window.performance.measure('complete','requestStart','domComplete');
+
+function setPerf(nm) {
+	var meas = performance.getEntriesByName(nm)[0].duration;
+	console.log(nm + ': %d', meas );
+	var _str = localStorage.getItem(nm);
+	localStorage.setItem(nm, ( _str ? _str + ',' : '' ) + meas);
+}
+
+['interactive','complete','received'].forEach(setPerf);
+
+//to tally:
+localStorage.getItem('complete').split(',').map(function(v){ return parseInt(v, 10); }).reduce(function(a, v, i, l){ return a + ( v / l.length) }, 0);
+
 
