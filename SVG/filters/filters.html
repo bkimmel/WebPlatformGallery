@@ -277,9 +277,10 @@
 
         <style>
 			.filtertest.strp4text text {
-				fill: red;
+				fill: rgba(222,22,22,.4);
 				
-				font-family: sans-serif;
+				font-family: Helvetica, sans-serif;
+				font-kerning: normal;
 				font-size: 2.3em;
 				
 			}
@@ -307,16 +308,35 @@
         		</filter>
         		<pattern id="pattern4"
 					   x="0" y="0" width="1" height="100"
-					   patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"  >
-				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #4444ff" />
+					   patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"  >
+				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: rgba(111,111,255,.8)" />
 			  	</pattern>
 			  	<mask id="text4mask" maskContentUnits="userSpaceOnUse" >
-        			<text x="12" y="50" style="fill: #FFF; filter: url(#strp4text);">Test</text>
+        			<text kerning="auto" x="2" y="50" style="fill: #FFF; filter: url(#strp4text);">Test</text>
         		</mask>
         	</defs>
         	<rect class="striper" x="0" y="0" width="100" height="100" />
-        	<text class="convolveme" x="12" y="50">Test</text>
+        	<text kerning="auto" class="convolveme" x="2" y="50">Test</text>
         </svg>
-         
+        <script>
+		function sld() {
+			 var _s = Date.now();
+			 var _ks = 0;
+			 var _pat = document.querySelector('#pattern4');
+			 function g() {
+			   var pct = ( Date.now() - _s ) / 1000;
+			   pct = pct >= 1 ? 1 : pct;
+			   
+			   if(pct >= 1) {
+			   		_pat.setAttribute('x', 0 );
+			   		sld();
+			   		return 1;
+			   }
+			   _pat.setAttribute('x', pct );
+			   return requestAnimationFrame(g);
+			 }
+			requestAnimationFrame(g);
+		}
+        </script>
 	</body>
 </html>
