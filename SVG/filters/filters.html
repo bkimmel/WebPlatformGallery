@@ -302,13 +302,13 @@
 					   "1 0 0 
 					   0 1 0
 					   0 0 1" in="DILATE" result="CONVOLVE" />
-					<feOffset dx=".5" dy=".5" in="CONVOLVE" result="OFFSET" />
+					<feOffset dx="1" dy="1" in="CONVOLVE" result="OFFSET" />
 					<feComposite operator="out" in2="DILATE" in="OFFSET"/>
         		</filter>
         		<pattern id="pattern4"
 					   x="0" y="0" width="1" height="100"
 					   patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"  >
-				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #0000ff" />
+				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #4444ff" />
 			  	</pattern>
 			  	<mask id="text4mask" maskContentUnits="userSpaceOnUse" >
         			<text x="12" y="50" style="fill: #FFF; filter: url(#strp4text);">Test</text>
