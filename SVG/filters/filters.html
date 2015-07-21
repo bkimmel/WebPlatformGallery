@@ -1,0 +1,322 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sample</title>
+        <meta name="description" content="Sample page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+			svg {
+				display: block;
+				width: 50%;
+				height: 40vh;
+				outline: 1px solid red;
+				margin: 20px auto;
+			}
+
+        </style>
+        
+    </head>
+    <body>
+    	<style>
+			.filtertest.base rect {
+				fill: red;
+				stroke: black;
+				filter: url(#rectnoise);
+			}
+    	</style>
+        <svg class="filtertest base" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="rectnoise">
+        			<feTurbulence baseFrequency=".012,.014" width="200%" height="200%" top="-50%" type="turbulence" numOctaves="3" seed="0" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -1 1"
+					   in="FRACTAL-TEXTURE_10"/>
+					 
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"  />
+        </svg>
+        <style>
+			.filtertest.blend rect {
+				fill: red;
+				stroke: black;
+
+				filter: url(#rectblend);
+				mask: url(#circlemask);
+			}
+        </style>
+        <svg class="filtertest blend" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="rectblend">
+        			<feTurbulence baseFrequency=".05,.004" width="200%" height="200%" top="-50%" type="fractalNoise" numOctaves="3" seed="0" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -1.2 .9"
+					   in="FRACTAL-TEXTURE_10" result="ALPHA_NOISE" />
+					  <feFlood flood-color="red" flood-opacity=".75" result="RED_FLOOD" />
+					 <feBlend mode="multiply" in="ALPHA_NOISE" in2="RED_FLOOD"/>
+        		</filter>
+        		<mask id="circlemask" maskContentUnits="userSpaceOnUse" >
+        			<circle cx="40" cy="40" r="40" style="stroke:#777; fill:#fff"/>
+        			<circle cx="40" cy="40" r="10" style="stroke:#777; fill:#000"/>
+        		</mask>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"></rect>
+        </svg>
+         <style>
+			.filtertest.rectin rect {
+				fill: red;
+				stroke: black;
+
+				filter: url(#rectin);
+			}
+        </style>
+         <svg class="filtertest rectin" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="rectin">
+        			<feTurbulence baseFrequency=".0095,.017" width="200%" height="200%" top="-50%" type="fractalNoise" numOctaves="3" seed="0" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "1 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -3.9 1.8"
+					   in="FRACTAL-TEXTURE_10" result="ALPHA_NOISE" />
+					  
+					 <fecomposite id="comp1" operator="arithmetic" k1="1.1" k2=".1" k3=".1" k1=".1" in="ALPHA_NOISE" in2="SourceGraphic"/>
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"></rect>
+        </svg>
+        <script>
+		function ank2() {
+		 var _s = Date.now();
+		 var _ks = .1;
+		 var _comp = document.querySelector('#comp1');
+		 function g() {
+		   var pct = ( Date.now() - _s ) / 2000;
+		   pct = pct >= 1 ? 1 : pct;
+		   _comp.setAttribute('k2', ( _ks + 3.5*(pct) ) );
+		   return pct >= 1 ? true : requestAnimationFrame(g);
+		 }
+		requestAnimationFrame(g);
+
+		}
+        </script>
+        <style>
+			.filtertest.matrixb rect {
+				fill: red;
+				stroke: black;
+
+				filter: url(#matb);
+			}
+        </style>
+        <svg class="filtertest matrixb" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="matb">
+        			<feTurbulence baseFrequency=".04,0.055" width="200%" height="200%" top="-50%" type="fractalNoise" numOctaves="7" seed="8" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "1 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -3.9 1.8"
+					   in="FRACTAL-TEXTURE_10" result="ALPHA_NOISE" />
+					  
+					 <fecomposite id="comp2" operator="arithmetic" k1="1.1" k2=".7" k3=".1" k1=".1" in2="ALPHA_NOISE" in="SourceGraphic"/>
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"></rect>
+        </svg>
+        <style>
+			.filtertest.blur rect {
+				fill: red;
+				stroke: black;
+
+				filter: url(#blur);
+			}
+        </style>
+        <svg class="filtertest blur" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="blur">
+        			<feGaussianBlur in="SourceGraphic" stdDeviation=".5" />
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"></rect>
+        </svg>
+
+        <style>
+			.filtertest.morph rect {
+				fill: red;
+				stroke: black;
+
+				filter: url(#morph);
+			}
+        </style>
+        <svg class="filtertest morph" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="morph">
+        			<feMorphology id="mph" operator="dilate" radius="10" in="SourceGraphic" result="BEVEL_10" />
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"></rect>
+        </svg>
+        <script>
+		function mrph() {
+			 var _s = Date.now();
+			 var _ks = 10;
+			 var _comp = document.querySelector('#mph');
+			 function g() {
+			   var pct = ( Date.now() - _s ) / 1000;
+			   pct = pct >= 1 ? 1 : pct;
+			   _comp.setAttribute('radius', ( _ks - _ks*(pct) ) );
+			   return pct >= 1 ? true : requestAnimationFrame(g);
+			 }
+			requestAnimationFrame(g);
+
+		}
+        </script>
+
+        <style>
+			.filtertest.blrtext text {
+				fill: red;
+				
+				font-family: sans-serif;
+				font-size: 2em;
+				filter: url(#rectin);
+			}
+        </style>
+        <svg class="filtertest blrtext" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="blrtext">
+        			<feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+        		</filter>
+        	</defs>
+        	<text x="20" y="50">Text</text>
+        </svg>
+
+         <style>
+			.filtertest.strptext text {
+				fill: red;
+				
+				font-family: sans-serif;
+				font-size: 2.3em;
+				filter: url(#strptext);
+			}
+			.filtertest.strptext rect {
+				fill: url(#pattern2);
+			}
+
+			.filtertest.strptext .striper {
+				mask: url(#textmask);
+			}
+        </style>
+        <svg class="filtertest strptext" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="strptext">
+        			<feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+        		</filter>
+        		<pattern id="pattern2"
+					   x="0" y="0" width="1" height="100"
+					   patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"  >
+				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #0000ff" />
+			  	</pattern>
+			  	<mask id="textmask" maskContentUnits="userSpaceOnUse" >
+        			<text x="13" y="51" style="fill: #FFF">Text</text>
+        		</mask>
+        	</defs>
+        	<rect class="striper" x="0" y="0" width="100" height="100" />
+        	<text x="12" y="50">Text</text>
+        </svg>
+
+         <style>
+			.filtertest.strp2text text {
+				fill: red;
+				
+				font-family: sans-serif;
+				font-size: 2.3em;
+				
+			}
+			.filtertest.strp2text rect {
+				fill: url(#pattern3);
+			}
+
+			.filtertest.strp2text .striper {
+				mask: url(#text2mask);
+			}
+
+			.filtertest.strp2text .convolveme {
+			}
+        </style>
+        <svg class="filtertest strp2text" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="strp2text">
+        			<feMorphology operator="dilate" radius="1" in="SourceGraphic" result="DILATE" />
+        			<feConvolveMatrix order="3,3" kernelMatrix=
+					   "1 0 0 
+					   0 1 0
+					   0 0 1" in="DILATE"  />
+        		</filter>
+        		<pattern id="pattern3"
+					   x="0" y="0" width="1" height="100"
+					   patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"  >
+				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #0000ff" />
+			  	</pattern>
+			  	<mask id="text2mask" maskContentUnits="userSpaceOnUse" >
+        			<text x="12" y="50" style="fill: #FFF; filter: url(#strp2text);">Text</text>
+        		</mask>
+        	</defs>
+        	<rect class="striper" x="0" y="0" width="100" height="100" />
+        	<text class="convolveme" x="12" y="50">Text</text>
+        </svg>
+
+        <style>
+			.filtertest.strp4text text {
+				fill: red;
+				
+				font-family: sans-serif;
+				font-size: 2.3em;
+				
+			}
+			.filtertest.strp4text rect {
+				fill: url(#pattern4);
+			}
+
+			.filtertest.strp4text .striper {
+				mask: url(#text4mask);
+			}
+
+			.filtertest.strp4text .convolveme {
+			}
+        </style>
+        <svg class="filtertest strp4text" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="strp4text">
+        			<feMorphology operator="dilate" radius="1" in="SourceGraphic" result="DILATE" />
+        			<feConvolveMatrix order="3,3" kernelMatrix=
+					   "1 0 0 
+					   0 1 0
+					   0 0 1" in="DILATE" result="CONVOLVE" />
+					<feOffset dx=".5" dy=".5" in="CONVOLVE" result="OFFSET" />
+					<feComposite operator="out" in2="DILATE" in="OFFSET"/>
+        		</filter>
+        		<pattern id="pattern4"
+					   x="0" y="0" width="1" height="100"
+					   patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"  >
+				  <rect x="0" y="0" width=".5" height="100" style="stroke: none; fill: #0000ff" />
+			  	</pattern>
+			  	<mask id="text4mask" maskContentUnits="userSpaceOnUse" >
+        			<text x="12" y="50" style="fill: #FFF; filter: url(#strp4text);">Test</text>
+        		</mask>
+        	</defs>
+        	<rect class="striper" x="0" y="0" width="100" height="100" />
+        	<text class="convolveme" x="12" y="50">Test</text>
+        </svg>
+         
+	</body>
+</html>
