@@ -366,26 +366,117 @@
 
         <style>
 			.filtertest.greenscreen circle {
-				fill: green;
+				fill: #00FF00;
 				stroke: red;
 				stroke-width: 5px;
-				filter: none;
+				filter: url(#greenscreen);
 			}
     	</style>
         <svg class="filtertest greenscreen" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
         	<defs>
         		<filter id="greenscreen">
-        			
-        			<feColorMatrix type="matrix" values=
-					   "0 0 0 0 0,
-					   0 0 0 0 0,
-					   0 0 0 0 0,
-					   0 0 0 -1 1"
-					   in="FRACTAL-TEXTURE_10"/>
+        			<fecomponenttransfer in="SourceGraphic" result="GREEN">
+        				<fefuncr type="linear" slope="0" intercept="-1" />
+					   	<fefuncg type="linear" slope="1" intercept="0" />
+					   	<fefuncb type="linear" slope="0" intercept="-1" />
+						<fefunca type="linear" slope="1" intercept="0" />
+					 </fecomponenttransfer>
 					 
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 1 0 0 0"
+					   in="GREEN" result="GREENWASH" />
+					   <feimage result="PIC" width="10" height="10" preserveAspectRatio="xMidYMid slice" edgeMode="duplicate" xlink:href="https://pbs.twimg.com/profile_images/1134126976/Kimmelpalooza_normal.jpg" />
+					   <fetile in="PIC" result="PICTILE" />
+					   <fecomposite operator="in" k1="0" k2="1" k3="1" k4="0" in2="GREENWASH" in="PICTILE" result="COMPOSITE" />
+					   <femerge>
+							<femergenode in="SourceGraphic" />
+							<femergenode in="COMPOSITE" />
+					   </femerge>
+						<!--
+						-->
         		</filter>
         	</defs>
         	<circle cx="50" cy="50" r="20"  />
+        </svg>
+         <style>
+			.filtertest.greenscreen2 circle {
+				fill: #00FF00;
+				stroke: red;
+				stroke-width: 5px;
+				filter: url(#greenscreen2);
+			}
+    	</style>
+        <svg class="filtertest greenscreen2" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="greenscreen2">
+        			<fecomponenttransfer in="SourceGraphic" result="BRIGHTGREENON">
+        				<fefuncr type="linear" slope="0" intercept="-1" />
+					   	<fefuncg type="linear" slope="1" intercept="-.9" />
+					   	<fefuncb type="linear" slope="0" intercept="-1" />
+						<fefunca type="linear" slope="1" intercept="0" />
+					 </fecomponenttransfer>
+					 <fecomponenttransfer in="BRIGHTGREENON" result="AMPGREEN" >
+        				<fefuncr type="linear" slope="0" intercept="-1" />
+					   	<fefuncg type="linear" slope="255" intercept="0" />
+					   	<fefuncb type="linear" slope="0" intercept="-1" />
+						<fefunca type="linear" slope="1" intercept="0" />
+					 </fecomponenttransfer>
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 1 0 0 0"
+					   in="AMPGREEN" result="GREENWASH" />
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 -1 0 0 0,
+					   0 0 0 0 0,
+					   0 1 0 0 0"
+					   in="AMPGREEN" result="BLACKWASH" />
+					   <feimage result="PIC" width="5" height="5" preserveAspectRatio="xMidYMid slice" edgeMode="duplicate" xlink:href="https://pbs.twimg.com/profile_images/1134126976/Kimmelpalooza_normal.jpg" />
+					   <fetile in="PIC" result="PICTILE" />
+					   <fecomposite operator="in" k1="0" k2="1" k3="1" k4="0" in2="GREENWASH" in="PICTILE" result="COMPOSITE" />
+					   <femerge>
+							<femergenode in="SourceGraphic" />
+							<femergenode in="BLACKWASH" />
+							<femergenode in="COMPOSITE" />
+					   </femerge>
+						<!--
+						-->
+        		</filter>
+        	</defs>
+        	<circle cx="50" cy="50" r="20"  />
+        </svg>
+        <style>
+			.filtertest.greenscreen3 {
+				width: 90vw;
+				height: 90vw;
+			}
+
+			.filtertest.greenscreen3 text {
+				fill: #00FF00;
+				stroke: black;
+				
+				stroke-width: 1px;
+				filter: url(#greenscreen2);
+
+				font-family: Helvetica, sans-serif;
+				font-kerning: normal;
+				font-size: 2em;
+			}
+    	</style>
+        <svg class="filtertest greenscreen3" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<mask id="mask1" maskContentUnits="userSpaceOnUse" >
+        			<text kerning="auto" x="5" y="30" style="fill: #FFF; filter: url(#strp4text);">Test</text>
+        		</mask>
+        	</defs>
+        	<text  x="5" y="30">Test</text>
+        	<text  x="5" y="60">You</text>
+        	<text  x="5" y="80" style="font-size: 1em; stroke-width: .5px;">Man</text>
         </svg>
 	</body>
 </html>
