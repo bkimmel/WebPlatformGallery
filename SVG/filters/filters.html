@@ -41,6 +41,30 @@
         	</defs>
         	<rect x="20" y="20" height="50" width="50"  />
         </svg>
+		<style>
+			.filtertest.baseb rect {
+				fill: red;
+				stroke: black;
+				filter: url(#rectbnoise);
+			}
+    	</style>
+        <svg class="filtertest baseb" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="rectbnoise">
+        			<feTurbulence baseFrequency=".012,.014" width="200%" height="200%" top="-50%" type="turbulence" numOctaves="3" seed="0" result="FRACTAL-TEXTURE" />
+        			<feColorMatrix type="matrix" values=
+					   "1 0 0 0 -1,
+					   0 1 0 0 -1,
+					   0 0 2 0 .2,
+					   0 0 0 0 4"
+					   in="FRACTAL-TEXTURE" result="MATRIX"/>
+					 <fecomponenttransfer in="MATRIX">
+					   <fefuncb type="discrete" tableValues="0.0 0.0 0.0 0.2 0.4 0.8 1.0">
+					 </fecomponenttransfer>
+        		</filter>
+        	</defs>
+        	<rect x="20" y="20" height="50" width="50"  />
+        </svg>
         <style>
 			.filtertest.blend rect {
 				fill: red;
@@ -339,5 +363,29 @@
 			requestAnimationFrame(g);
 		}
         </script>
+
+        <style>
+			.filtertest.greenscreen circle {
+				fill: green;
+				stroke: red;
+				stroke-width: 5px;
+				filter: none;
+			}
+    	</style>
+        <svg class="filtertest greenscreen" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="greenscreen">
+        			
+        			<feColorMatrix type="matrix" values=
+					   "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -1 1"
+					   in="FRACTAL-TEXTURE_10"/>
+					 
+        		</filter>
+        	</defs>
+        	<circle cx="50" cy="50" r="20"  />
+        </svg>
 	</body>
 </html>
