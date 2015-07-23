@@ -1,0 +1,77 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sample</title>
+        <meta name="description" content="Sample page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+			svg {
+				display: block;
+				width: 50%;
+				height: 40vh;
+				outline: 1px solid red;
+				margin: 20px auto;
+			}
+
+        </style>
+        
+    </head>
+    <body>
+         <style>
+			.filtertest.greenscreen2 rect {
+				fill: url(#greengrad);
+				stroke: rgb(0,0,0);
+				stroke-width: 5px;
+				filter: url(#shift);
+			}
+    	</style>
+        <svg class="filtertest greenscreen2" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<linearGradient id="greengrad"
+								x1="0%" y1="0%"
+								x2="100%" y2="0%"
+								spreadMethod="pad">
+				  <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
+				  <stop offset="100%" stop-color="#00FF00" stop-opacity="1"/>
+				</linearGradient>
+        		<filter id="shift">
+        			<feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -1.47 0 0 .48"
+					   in="SourceGraphic" result="LOWGREEN" />
+					   
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 1.1 0 0 -.4"
+					   in="LOWGREEN" result="MIDDLE_GREEN" />
+						
+					   <feflood flood-color="black" flood-opacity="1" result="BLACK" />
+					   <feComposite operator="in" in="BLACK" in2="MIDDLE_GREEN" result="STANCHEON1"/>
+						<!--
+					   
+        			<fecomponenttransfer in="ISOLATEGREEN" result="UPGREEN">
+					   	<fefuncg type="linear" slope="1" intercept=".6" />
+						<fefunca type="identity" />
+					 </fecomponenttransfer>
+
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 1 0 0 0"
+					   in="SourceGraphic" result="FLIPGREEN" />
+					 
+						
+						-->
+        		</filter>
+        	</defs>
+        	<rect x="10" y="10" width="80" height="80"  />
+        </svg>
+	</body>
+</html>
