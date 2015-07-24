@@ -1,0 +1,109 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>golden ratio layout</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <style>
+        	.container {
+        		width: 70%;
+        		margin: 2em auto;
+        		border: 2px solid silver;
+        		display: flex;
+        		flex-flow: column wrap;
+        		height: 25vh;
+
+        		justify-content: center;
+        		align-items: center;
+        		align-content: center;
+
+        		background-color: rgba(0,0,0,.05);
+        	}
+
+        	.container .item {
+        		box-sizing: border-box;
+        		
+        		display: flex;
+        		flex: 1;
+        		/*flex-basis controls size along main axis*/
+        		flex-basis: 3em;
+				margin: .5em;
+				width: 45%;
+
+        		background-color: rgba(0,0,0,.05);
+        	}
+
+        	.container .item:nth-child(1) {
+        		min-height: 20vh;
+				
+        		background-color: rgba(220,0,0,.25);
+        	}
+
+        	.container .item:nth-child(2) {
+        		min-height: 14vh;
+				
+        		background-color: rgba(0,220,0,.25);
+        	}
+
+        	.container .item:nth-child(3) {
+        		
+				
+        		background-color: rgba(0,0,220,.25);
+        	}
+        </style>
+        <div class="container flexcontainer_a">
+            <div class="item">some</div>
+            <div class="item">content</div>
+            <div class="item">here</div>
+        </div>
+		<style>
+			.containerb {
+				display: flex;
+				width: 80%;
+				flex-flow: row wrap;
+				margin: 2em auto;
+				padding: .5em;
+				outline: 1px solid silver;
+			}
+
+			.itemb {
+				width: 50%;
+				background-color: rgba(0,0,0,.05);
+				display: flex;
+				flex-flow: row wrap;
+				outline: 1px solid rgba(220,0,0,.3);
+				flex-basis: 30em;
+				flex-grow: 1;
+				flex-shrink: 1;
+				margin: 1em;
+			}
+
+			.itemb.subitemb {
+				display: block;
+				width: 51%;
+				margin: 0;
+			}
+
+			.itemb.subitemb:nth-child(1) {
+				height: 2em;
+			}
+			.itemb.subitemb:nth-child(2) {
+				height: 1.236em;
+			}
+		</style>
+        <div class="containerb">
+            <div class="itemb">some</div>
+            <div class="itemb topitemb">
+            	<div class="itemb subitemb">content</div>
+            	<div class="itemb subitemb">here</div>
+            </div>
+        </div>                                                                                                        
+	</body>
+</html>
