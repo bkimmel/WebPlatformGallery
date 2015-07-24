@@ -84,8 +84,66 @@
 				});
 				_on = !_on;
 			}
-			setInterval(swap, 2000);
+			
 			swap();
 		</script>
+		<style>
+			.layoutblock {
+				background-color: rgba(0,0,0,.05);
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: center;
+			}
+
+			.layoutblock .icons {
+				display: inline-block;
+				height: 10em;
+				
+				background-color: rgba(0,0,0,.05);
+				margin: 0 .5em;
+
+				flex: 1 1 10em;
+				min-width: 10em;
+			}
+
+			
+
+			.layoutblock .centralblock {
+				display: inline-block;
+				height: 10em;
+				width: 30em;
+				background-color: rgba(0,0,0,.05);
+				flex: 2 1 30em;
+				min-width: 30em;
+			}
+
+			@media (max-width: 870px) {
+				.layoutblock .centralblock {
+					display: block;
+					order: 1;
+					flex-basis: 100%;
+					min-width: 100%;
+					width: 100%;
+				}
+
+				.layoutblock .icons {
+					order: 2;
+					margin: 0;
+				}
+			}
+
+		</style>
+		<div class="layoutblock">
+			<svg  class="left icons" viewBox="0 0 100 100" preserveAspectRatio="xMaxYMid meet">
+				<circle cx="10" cy="60" r="30" fill="red" />
+				<circle cx="60" cy="35" r="30" fill="red" />
+			</svg>
+			<div class="centralblock">
+
+			</div>
+			<svg class="right icons" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+
+			</svg>
+		</div>
     </body>
 </html>
