@@ -32,17 +32,62 @@
         		<linearGradient id="greengrad"
 								x1="0%" y1="0%"
 								x2="100%" y2="0%"
-								spreadMethod="pad">
+								gradientUnits="objectBoundingBox">
 				  <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
 				  <stop offset="100%" stop-color="#00FF00" stop-opacity="1"/>
 				</linearGradient>
         		<filter id="shift">
+        			
         			<feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
 					   0 1 0 0 0,
 					   0 0 0 0 0,
-					   0 -1.47 0 0 .48"
-					   in="SourceGraphic" result="LOWGREEN" />
+					   0 2 0 0 -1"
+					   in="SourceGraphic" result="GREENGREATERTHAN" />
+					  <!-- 2 = 1 / .5 -->
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="GREENGREATERTHAN" result="ALPHA_EQ"  />
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -1.818 0 1 0"
+					   in="ALPHA_EQ" result="LINE"  />
+					   <!-- 1.818 = 1 / .55 -->
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="LINE" result="STANCHEON1"  />
+					   
+					  
+					  <!--
+					<fecomponenttransfer in="GREENGREATERTHAN" result="ALPHAUP">
+        				<fefuncr type="identity" />
+					   	<fefuncg type="identity"/>
+					   	<fefuncb type="identity" />
+						<fefunca type="linear" slope="255" intercept="0" />
+					 </fecomponenttransfer>
+
+				   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -80 0 1 0"
+					   in="GREENGREATERTHAN" result="GREENBETWEEN"  />
+
+					   
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 50 0"
+					   in="LOWGREEN" result="AMP" />
 					   
 					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
@@ -53,7 +98,7 @@
 						
 					   <feflood flood-color="black" flood-opacity="1" result="BLACK" />
 					   <feComposite operator="in" in="BLACK" in2="MIDDLE_GREEN" result="STANCHEON1"/>
-						<!--
+						
 					   
         			<fecomponenttransfer in="ISOLATEGREEN" result="UPGREEN">
 					   	<fefuncg type="linear" slope="1" intercept=".6" />
