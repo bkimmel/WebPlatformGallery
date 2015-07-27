@@ -173,7 +173,7 @@
 						 <feMergeNode  in="STANCHEON1"/> 
 						</feMerge>
 
-						<feComposite operator="arithmetic" in2="SourceGraphic" in="OVERMERGE" k1="0" k2=".5" k3=".75" k4="0" />
+						<feComposite operator="arithmetic" in2="SourceGraphic" in="OVERMERGE" k1="0" k2="1" k3=".75" k4="0" />
 						
 						<!--
 						<feComposite result="COMPA" operator="arithmetic" in="STANCHEON2" in2="STANCHEON1" k1="0" k2=".5" k3=".5" k4="0" />
@@ -277,6 +277,43 @@
 		</style>
 		<svg style="width: 90%; height: 65vh;" class="filterimage" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
 		  <image x="0" y="0" width="100" height="100" xlink:href="http://assets.worldwildlife.org/photos/3825/images/original/shutterstock_12730534.jpg" />
+        </svg>
+        <style>
+        .filterimage2 image {
+				
+				stroke: rgb(0,0,0);
+				stroke-width: 5px;
+				
+			}
+
+		.filterimage2 .topimg {
+				
+				stroke: rgb(0,0,0);
+				stroke-width: 5px;
+				mask: url(#qtrmask);
+				filter: url(#maskfilter);
+			}
+		
+		</style>
+        <svg style="width: 90%; height: 65vh;" class="filterimage2" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+          <defs>
+           <filter id="maskfilter">
+				<fecomponenttransfer in="GREENGREATERTHAN" result="ALPHAUP">
+        				<fefuncr type="identity" />
+					   	<fefuncg type="linear" slope="2" intercept="0" />
+					   	<fefuncb type="identity" />
+						<fefunca type="identity" />
+					 </fecomponenttransfer>
+           </filter>
+           <mask id="qtrmask">
+           	  <rect x="0" y="0" width="25" height="100" fill="rgb(0,0,0)" />
+           	  <rect x="25" y="0" width="25" height="100" fill="rgb(255,255,255)" />
+           	  <rect x="50" y="0" width="25" height="100" fill="rgb(0,0,0)" />
+           	  <rect x="75" y="0" width="25" height="100" fill="rgb(255,255,255)" />
+           </mask>
+          </defs>
+		  <image x="0" y="0" width="100" height="100" xlink:href="http://assets.worldwildlife.org/photos/3825/images/original/shutterstock_12730534.jpg" />
+		  <image class="topimg" x="0" y="0" width="100" height="100" xlink:href="http://assets.worldwildlife.org/photos/3825/images/original/shutterstock_12730534.jpg" />
         </svg>
         <script>
 			function animatefilters() {
