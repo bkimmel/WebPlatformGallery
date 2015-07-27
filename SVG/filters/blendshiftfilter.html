@@ -36,9 +36,13 @@
 				  <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
 				  <stop offset="100%" stop-color="#00FF00" stop-opacity="1"/>
 				</linearGradient>
+				<filter id="hold">
+					 
+				</filter>
         		<filter id="shift">
         			
-        			<feColorMatrix type="matrix" values=
+        			 
+					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
 					   0 1 0 0 0,
 					   0 0 0 0 0,
@@ -60,13 +64,129 @@
 					   <!-- 1.818 = 1 / .55 -->
 					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
-					   0 0 0 0 0,
+					   0 1 0 0 0,
 					   0 0 0 0 0,
 					   0 0 0 100 0"
-					   in="LINE" result="STANCHEON1"  />
-					   
+					   in="LINE" result="TRANS1"  />
+					   <fecomponenttransfer in="TRANS1" result="STANCHEON1">
+							<fefunca class="alphatrans" type="linear" slope="1" intercept="0" />
+					   </fecomponenttransfer>
+
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 2.0618 0 0 -1"
+					   in="SourceGraphic" result="GREENGREATERTHAN2" />
 					  
-					  <!--
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="GREENGREATERTHAN2" result="ALPHA_EQ2"  />
+
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -1.85 0 1 0"
+					   in="ALPHA_EQ2" result="LINE2"  />
+					   
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 .2,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="LINE2" result="TRANS2"  />
+					   <fecomponenttransfer in="TRANS2" result="STANCHEON2">
+							<fefunca class="alphatrans" type="linear" slope="1" intercept="0" />
+					   </fecomponenttransfer>
+
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 2.223 0 0 -1"
+					   in="SourceGraphic" result="GREENGREATERTHAN3" />
+					  
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="GREENGREATERTHAN3" result="ALPHA_EQ3"  />
+
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -2.08333 0 1 0"
+					   in="ALPHA_EQ3" result="LINE3"  />
+					   
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 .3,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="LINE3" result="TRANS3"  />
+					   <fecomponenttransfer in="TRANS3" result="STANCHEON3">
+							<fefunca class="alphatrans" type="linear" slope="1" intercept="0" />
+					   </fecomponenttransfer>
+
+					    <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 2.223 0 0 -1"
+					   in="SourceGraphic" result="GREENGREATERTHAN4" />
+					  
+					 <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="GREENGREATERTHAN4" result="ALPHA_EQ4"  />
+
+					  <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 0,
+					   0 0 0 0 0,
+					   0 -2.48333 0 1 0"
+					   in="ALPHA_EQ4" result="LINE4"  />
+					   
+					   <feColorMatrix type="matrix" values=
+					  "0 0 0 0 0,
+					   0 1 0 0 .3,
+					   0 0 0 0 0,
+					   0 0 0 100 0"
+					   in="LINE4" result="TRANS4"  />
+					   <fecomponenttransfer in="TRANS4" result="STANCHEON4">
+							<fefunca class="alphatrans" type="linear" slope="1" intercept="0" />
+					   </fecomponenttransfer>
+						
+					   <feMerge id="pilein">
+					   	 <feMergeNode  in="SourceGraphic"/>
+					   	 <feMergeNode  in="STANCHEON4"/>
+					   	 <feMergeNode  in="STANCHEON3"/>
+						 <feMergeNode  in="STANCHEON2"/>
+						 <feMergeNode  in="STANCHEON1"/> 
+						</feMerge>
+
+
+						 <!--
+						  <feMergeNode in="STANCHEON3"/>
+						  <feMergeNode in="STANCHEON2"/>
+						  <feMergeNode in="STANCHEON1"/>
+						  <feMergeNode in="SourceGraphic"/>
+						  -->
+
+						<!--
+					   <feComposite in="STANCHEON1" in2="STANCHEON2" operator="arithmetic" k1="0" k2=".1" k3="1" k4="0" />
+					   
+
+					  
+					  
 					<fecomponenttransfer in="GREENGREATERTHAN" result="ALPHAUP">
         				<fefuncr type="identity" />
 					   	<fefuncg type="identity"/>
@@ -118,5 +238,43 @@
         	</defs>
         	<rect x="10" y="10" width="80" height="80"  />
         </svg>
+        <style>
+        .filtercircle circle {
+				fill: url(#radial);
+				stroke: rgb(0,0,0);
+				stroke-width: 5px;
+				filter: url(#shift);
+			}
+		</style>
+		<svg class="filtercircle" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+			<defs>
+			 	<radialGradient id="radial"
+				   fx="5%" fy="5%" r="80%"
+				   spreadMethod="pad"
+				   gradientUnits="objectBoundingBox" >
+				  <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
+				  <stop offset="100%" stop-color="#00FF00" stop-opacity="1" />
+				</radialGradient>
+			</defs>
+			<circle cx="50" cy="50" r="40"  />
+		</svg>
+        <script>
+			function animatefilters() {
+				var alphas = Array.prototype.slice.call( document.querySelectorAll('.alphatrans') );
+				var _n = Date.now();
+
+				function filterstep(offst, el) {
+					var t = Date.now();
+					var pct = ( t - _n ) / 1000;
+					var trace = ( 1 + Math.cos( ( ( Math.PI * pct ) + offst ) ) ) / 2;
+					el.setAttribute('slope', trace);
+					requestAnimationFrame(function(){ filterstep(offst, el) });
+				}
+
+				alphas.forEach(function(v,i){
+					requestAnimationFrame(function(){ filterstep(.25 * i * Math.PI, v) });
+				});
+}
+        </script>
 	</body>
 </html>
