@@ -95,7 +95,7 @@
 					   
 					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
-					   0 1 0 0 .2,
+					   0 1 0 0 .1,
 					   0 0 0 0 0,
 					   0 0 0 100 0"
 					   in="LINE2" result="TRANS2"  />
@@ -126,7 +126,7 @@
 					   
 					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
-					   0 1 0 0 .3,
+					   0 1 0 0 .1,
 					   0 0 0 0 0,
 					   0 0 0 100 0"
 					   in="LINE3" result="TRANS3"  />
@@ -157,7 +157,7 @@
 					   
 					   <feColorMatrix type="matrix" values=
 					  "0 0 0 0 0,
-					   0 1 0 0 .3,
+					   0 1 0 0 .1,
 					   0 0 0 0 0,
 					   0 0 0 100 0"
 					   in="LINE4" result="TRANS4"  />
@@ -165,7 +165,7 @@
 							<fefunca class="alphatrans" type="linear" slope="1" intercept="0" />
 					   </fecomponenttransfer>
 						
-					   <feMerge id="pilein">
+						<feMerge id="pilein" result="OVERMERGE">
 					   	 <feMergeNode  in="SourceGraphic"/>
 					   	 <feMergeNode  in="STANCHEON4"/>
 					   	 <feMergeNode  in="STANCHEON3"/>
@@ -173,8 +173,17 @@
 						 <feMergeNode  in="STANCHEON1"/> 
 						</feMerge>
 
+						<feComposite operator="arithmetic" in2="SourceGraphic" in="OVERMERGE" k1="0" k2=".5" k3=".75" k4="0" />
+						
+						<!--
+						<feComposite result="COMPA" operator="arithmetic" in="STANCHEON2" in2="STANCHEON1" k1="0" k2=".5" k3=".5" k4="0" />
+						<feComposite result="COMPB" operator="arithmetic" in="STANCHEON3" in2="COMPA" k1="0" k2=".5" k3=".5" k4="0" />
+						<feComposite result="COMPC" operator="arithmetic" in="STANCHEON4" in2="COMPB" k1="0" k2=".5" k3=".5" k4="0" />
+						<feComposite operator="over" in2="SourceGraphic" in="COMPC" k1="0" k2=".5" k3=".5" k4="0" />
+					   
 
-						 <!--
+
+						 
 						  <feMergeNode in="STANCHEON3"/>
 						  <feMergeNode in="STANCHEON2"/>
 						  <feMergeNode in="STANCHEON1"/>
@@ -258,6 +267,17 @@
 			</defs>
 			<circle cx="50" cy="50" r="40"  />
 		</svg>
+		 <style>
+        .filterimage image {
+				
+				stroke: rgb(0,0,0);
+				stroke-width: 5px;
+				filter: url(#shift);
+			}
+		</style>
+		<svg style="width: 90%; height: 65vh;" class="filterimage" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+		  <image x="0" y="0" width="100" height="100" xlink:href="http://assets.worldwildlife.org/photos/3825/images/original/shutterstock_12730534.jpg" />
+        </svg>
         <script>
 			function animatefilters() {
 				var alphas = Array.prototype.slice.call( document.querySelectorAll('.alphatrans') );
