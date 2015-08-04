@@ -1,3 +1,5 @@
+//Buffers exist to give us access to binary data in Node.  You can think of them as Node's "binary API"
+
 console.log('Messing With Buffers');
 
 //This creates a new "uninitialized" buffer that is 8 bytes in size:
