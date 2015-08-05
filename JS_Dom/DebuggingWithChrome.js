@@ -23,8 +23,16 @@ getEventListeners(document.querySelector('#mydiv'));
 	//OK, but this event handler is just a bunch of weird jQuery stuff... Where is the function it's actually calling?
 	jQuery._data( document.querySelector('#mydiv'), "events" );
 	//maybe in old jQuery => jQuery('#mydiv').data('events')
-	//Walk it up:
-	jQuery._data( document.querySelector('#mydiv').parentElement, "events" );
+	//Walk it up
+	function walkitup(el) {
+		var handlers = [];
+		while( !!el ) {
+			handlers.push( jQuery._data( el, "events" ) );
+			el = el.parentElement;
+		}
+		return handlers;
+	}
+	walkitup( document.querySelectorAll('.addcart .upselladd-button')[2] )
 	//From inside the handler function, if necessary:
 	debug( it.event.handlers );
 		//inside handlers:
