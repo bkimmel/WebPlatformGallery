@@ -22,7 +22,9 @@ getEventListeners(document.querySelector('#mydiv'));
 
 	//OK, but this event handler is just a bunch of weird jQuery stuff... Where is the function it's actually calling?
 	jQuery._data( document.querySelector('#mydiv'), "events" );
-	//mayb in old jQuery => jQuery('#mydiv').data('events')
+	//maybe in old jQuery => jQuery('#mydiv').data('events')
+	//Walk it up:
+	jQuery._data( document.querySelector('#mydiv').parentElement, "events" );
 	//From inside the handler function, if necessary:
 	debug( it.event.handlers );
 		//inside handlers:
