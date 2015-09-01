@@ -38,6 +38,7 @@ Objectifier.prototype._read = function(size) {
 		// console.log('size chunk: ', chunk);
 	// }
 	// else {
+		//If you read n bytes and they are not available, it will return null
 		chunk = this._source.read();
 		if(!!chunk) {
 			this._buffer += chunk;
