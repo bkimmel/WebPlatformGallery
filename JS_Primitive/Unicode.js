@@ -54,4 +54,7 @@ console.log(String.fromCharCode(0xD835, 0xD800)); //=> Math Bold A (1D400)
 //In Source: In identifiers, string literals, and regular expression literals, any code unit can also be expressed via a Unicode escape sequence \uHHHH, where HHHH are four hexadecimal digits. - Rausch.
   var f\u006F\u006F = 'abc';
   foo //=> 'abc'
+  
+//code golf
+((String.fromCharCode(65,771,771,772)).match(/\u0303/)+'').charCodeAt(0)
 
