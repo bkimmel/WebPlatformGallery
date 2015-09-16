@@ -51,4 +51,15 @@ var dv = new DataView(ab);
 //Dataviews allow ad-hoc reads & writes to data buffers via established view formats
 console.log('dv.getUint32(0, true);//true=little endian = %s', dv.getUint32(0, true));
 console.log('dv.getUint32(0, false);//false=big endian = %s', dv.getUint32(0, false));
+
+
+//In messages:
+window.onmessage = function(e){
+    var a = new Uint8Array(e.data);
+    console.log('Uint8(e.data).toString() /*from outside context*/ = %s', a.toString());
+}
+window.postMessage(ab,'*',[ab]);
+//Similar for worker.
+//*But ab is now "neutered".  You can't really do anything with it.  The purpose of this is to really quickly transfer data between contexts (window and iframe or window and Worker)
+console.log('ab.byteLength /*after transfer*/ = %s', ab.byteLength);
 '.:'
