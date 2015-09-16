@@ -4,7 +4,7 @@ var ab = new ArrayBuffer(12);
 console.log('typeof ab = %s', typeof ab);
 //get the length of the array buffer with .byteLength
 console.log('ab.byteLength = %s', ab.byteLength);
-//You can read data from parts of the ArrayBuffer by using .slice, which is analgous to normal Arrays
+//You can read data from parts of the ArrayBuffer by using .slice, which is analogous to normal Arrays
 console.log('ab.slice(1).byteLength = %s', ab.slice(1).byteLength);
 console.log('ab.slice(1,-1).byteLength = %s', ab.slice(1,-1).byteLength);
 
