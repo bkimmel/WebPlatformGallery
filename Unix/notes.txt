@@ -1,0 +1,4 @@
+--Run process that ignores hangup (i.e. it runs after you disconnect session)
+nohup command &
+--Hit Ctrl+C
+exit session
