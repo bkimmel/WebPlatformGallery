@@ -61,6 +61,8 @@ Promise.race([p6, p7]).then(function(value) {
 
 //Note that when you resolve with a 'thenable', the result gets passed to the then instead of the promise itself:
 var p = new Promise(function(res, rej){ res(new Promise(function(res, rej){ res(42) })) }).then(function(v){ console.log(v, typeof v) });
+//It also unpacks custom thenables...
+var q = new Promise(function(res, rej){ res({then: function(rr,rj){ rr(42); }}) }).then(function(v){ console.log(v, typeof v) });
 
 
 
