@@ -59,5 +59,8 @@ Promise.race([p6, p7]).then(function(value) {
   // p7 is faster, so it rejects
 });
 
+//Note that when you resolve with a 'thenable', the result gets passed to the then instead of the promise itself:
+var p = new Promise(function(res, rej){ res(new Promise(function(res, rej){ res(42) })) }).then(function(v){ console.log(v, typeof v) });
+
 
 

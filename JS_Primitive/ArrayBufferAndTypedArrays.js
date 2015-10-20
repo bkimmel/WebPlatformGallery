@@ -44,14 +44,12 @@ console.log('%cvar c8 = new Uint8ClampedArray(ab); c8[11]=256;', 'color: rgb(0,2
 var c8 = new Uint8ClampedArray(ab); c8[11]=256;
 console.log('u32.toString = %s', u32.toString());
 
-
 //**DataViews
 console.log('%cvar dv = new DataView(ab);', 'color: rgb(0,200,0);');
 var dv = new DataView(ab);
 //Dataviews allow ad-hoc reads & writes to data buffers via established view formats
 console.log('dv.getUint32(0, true);//true=little endian = %s', dv.getUint32(0, true));
 console.log('dv.getUint32(0, false);//false=big endian = %s', dv.getUint32(0, false));
-
 
 //In messages:
 window.onmessage = function(e){
