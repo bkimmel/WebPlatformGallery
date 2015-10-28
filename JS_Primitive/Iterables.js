@@ -11,6 +11,12 @@ for (t of iter) { console.log(t); }
 //=> 5
 //=> undefined
 
+//if you don't retrieve the iterator right away, you have to .call it with the object, otherwise it will yield an error:
+var a = [1,2,3,4];
+var b = a[Symbol.iterator];
+//b() --> ERROR
+var c = b.call(a); //OK
+
 var customiter = {
 };
 //At the meta-key for Symbol.iterator, you add the 'iterator function' which returns a module
