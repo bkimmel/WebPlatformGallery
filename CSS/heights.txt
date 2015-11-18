@@ -1,0 +1,13 @@
+.outer {
+
+  .inner {
+    height: 100% /*WON'T WORK: Elements search "up" the tree for a defined non-relative height... there is nothing defined above this*/
+  }
+}
+
+.outer {
+  height: 400px;
+  .inner {
+    height: 100% /*WILL WORK*/
+  }
+}
