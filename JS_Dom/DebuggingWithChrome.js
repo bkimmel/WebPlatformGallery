@@ -1,4 +1,6 @@
-
+//To track down "mystery traces" where Chrome doesn't report the line number, turn on 'pause on uncaught exceptions' then do this
+document.querySelectorAll('script');
+//and look at the last script - which is often the offender
 
 //What the hell is happening to this object and why?
 Object.observe(thobjectinquestion, function(change){ console.log(change); debugger; });
