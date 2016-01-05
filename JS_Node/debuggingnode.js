@@ -12,7 +12,7 @@
 
 //WITH NODE-INSPECTOR:
   //run node --debug program.js
-  //in a seperate window run node-inspector
+  //in a separate window run node-inspector
     //go to the URL it serves from and it will open a devtools for you
 
 var http = require('http');
