@@ -28,12 +28,22 @@ navigator.webkitGetUserMedia({audio: true}, function(stream){
         //Solution: Use an "Output only" ScriptProcessor Node with the same frame chunk-size as the one it was captured with
         var floatarray = samples.reduce(function(agg,v){ var ret = new Float32Array(agg.length + v.length); ret.set(agg,0); ret.set(v, agg.length); return ret; }, new Float32Array(0));
         
+        //floatarray...
+        //Can post this off via an XHR like so:
+        //var myxhr = new XMLHttpRequest();
+        //myxhr.addEventListener('load', function(e){ console.log(this.responseText); });
+        //myxhr.open("GET", "http://www.someendpointwhereyousendtheaudio/audioapi");
+        //myxhr.send(floatarray);
+
         var sourceNode = audioCtx.createScriptProcessor(4096, 0, 1);
+        var currentframe = 0;
         sourceNode.onaudioprocess = function(audioevt) {
             var outputBuffer = audioevt.outputBuffer;
             var outputData = outputBuffer.getChannelData(0);
             //debugger;
-            var takeframe = samples.shift();
+            var takeframe = samples[currentframe++];
+            currentframe = (currentframe >= samples.length) ? 0 : currentframe;
+            !currentframe && console.log('framereset'); 
             //Pull the frame from the recorded one and put it in the output channel
             outputData.forEach(function(v,i){ outputData[i] = takeframe[i]; });
         }
@@ -44,32 +54,16 @@ navigator.webkitGetUserMedia({audio: true}, function(stream){
         console.log('Playing...');
     }, 4000);
 
-
-
-
-//     var mediaRecorder = new MediaRecorder(stream);
-//     var chunks = [];
-
-
-//     mediaRecorder.start();
-
-//     mediaRecorder.ondataavailable = function(e) {
-//       chunks.push(e.data);
-//     };
-
-//     mediaRecorder.onstop = function(){
-//         var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-//         var tgtURL = window.URL.createObjectURL(blob);
-//         window.location = tgtURL;
-//     };
-
-//     setTimeout(function(){ mediaRecorder.stop(); }, 4000);
-    //debugger; 
 }, function(err){ 
     debugger; 
 });
 
 /*
+//COMMENTS ON FAILED EXPERIMENTS:
+//1. MediaRecorder: This is actually the most elegant solution, but only supported by Firefox.
+//2. As mentioned above, AudioBuffer objects are not as "transferable" as you might think.
+//3. To solve for 2, tried "custom sampling" over Herz range, whoch did not work well.
+//4. Ran into some funny-ish issues with Nodes "disappearing" in debug in places where they were closed over...not sure if platform bug or what.
 //audioCtx.close();
         //debugger;
         //source.disconnect();
@@ -117,5 +111,25 @@ navigator.webkitGetUserMedia({audio: true}, function(stream){
         // start the _source playing
         console.log('Playing...');
         _source.start(0);
+
+
+//     var mediaRecorder = new MediaRecorder(stream);
+//     var chunks = [];
+
+
+//     mediaRecorder.start();
+
+//     mediaRecorder.ondataavailable = function(e) {
+//       chunks.push(e.data);
+//     };
+
+//     mediaRecorder.onstop = function(){
+//         var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+//         var tgtURL = window.URL.createObjectURL(blob);
+//         window.location = tgtURL;
+//     };
+
+//     setTimeout(function(){ mediaRecorder.stop(); }, 4000);
+    //debugger; 
 
 */
