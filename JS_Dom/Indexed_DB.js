@@ -4,7 +4,7 @@ request.onerror = function(event) {
   alert("Why didn't you allow my web app to use IndexedDB?!");
 };
 request.onsuccess = function(event) {
-  debugger;
+  //debugger;
   var db = event.target.result;
   var req = db.transaction(['contacts']).objectStore("contacts").get('bill@company.com');
   req.onsuccess = function(evt) {
@@ -20,6 +20,20 @@ request.onsuccess = function(event) {
       cursor.continue();
     }
   };
+
+  var scanner = db.transaction(['contacts']).objectStore('contacts').openCursor();
+  console.info('Scanning all entries:');
+  scanner.onsuccess = function(evt){
+    var cursor = evt.target.result;
+    if (cursor) {
+      //debugger;
+      console.log(JSON.stringify(cursor.value));
+      cursor.continue();
+    }
+    else {
+      console.info("No more entries!");
+    }
+  }
 };
 request.onupgradeneeded = function(event) {
    //debugger;

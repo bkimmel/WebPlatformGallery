@@ -62,3 +62,11 @@ function assertstop() {
 }
 assertstop(1 === 1, 0 === 0); //nothing
 assertstop(true, true, false); //breaks and allows you to inspect (use console.trace to go back through the stack and see where it failed)
+
+//DEBUGGING EVENTS:
+//1. be cautious - jQuery events jQuery('#mydiv').trigger('submit') - do not always fire native handlers in older versions of jQuery.
+//2. jQuery handlers do not account for useCapture
+//3. When employing useCapture, you must specify true to remove the listener -->
+	//function dosomething(){ console.log(1); }
+	//document.querySelector('#mydiv').addEventListener('click',dosomething,true/*usecapture*/)
+	//document.querySelector('#mydiv').removeEventListener('click',dosomething,true/*must also specify usecapture to remove*/)
