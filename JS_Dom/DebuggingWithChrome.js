@@ -70,3 +70,6 @@ assertstop(true, true, false); //breaks and allows you to inspect (use console.t
 	//function dosomething(){ console.log(1); }
 	//document.querySelector('#mydiv').addEventListener('click',dosomething,true/*usecapture*/)
 	//document.querySelector('#mydiv').removeEventListener('click',dosomething,true/*must also specify usecapture to remove*/)
+
+
+//For Adobe Analytics (at work:) set breakpoint on sendBeacon function to catch Analytics errors
