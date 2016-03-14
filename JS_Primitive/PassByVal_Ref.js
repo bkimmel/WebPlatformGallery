@@ -12,8 +12,9 @@ outer();
 a = function d() {
     console.log("i am d");
 };
-a();
-//Logs "I am a." (see above).
-outer();
+
+a(); //Logs "I am d." (see above).
+outer(); //Logs "I am a." (see above).
+
 //So JS is "pass by value", but the "value" can be a reference to an object.
 //.: When you change a above, it changes the top-level value,  but the function b keeps its reference to the original "i am a" function.
