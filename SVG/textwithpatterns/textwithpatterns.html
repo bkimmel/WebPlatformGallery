@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400px" height="300px" viewBox="0 0 400 300"
+     xml:lang="en">
+    <title>Text Bounding Box</title>
+    <style type="text/css">
+        text {
+            font-size: 50px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+    </style>
+    <pattern id="stripes" width="100%" height="20%"
+             patternContentUnits="objectBoundingBox">
+		<!-- Each pattern tile extends the width of the bounding box and one-fifth (20%) of its height. -->
+        <rect width="1" height="0.1" fill="indigo" />
+        <rect width="1" height="0.1" y="0.1"
+              fill="royalBlue" />
+		<!-- Each pattern tile extends the width of the bounding box and one-fifth (20%) of its height. -->
+     </pattern>
+    <defs>
+        <path id="p" d="M250,150 L350,200 250,270" />
+    </defs>
+
+    <g fill="url(#stripes)"> <!-- Each pattern tile extends the width of the bounding box and one-fifth (20%) of its height. -->                               
+        <text x="50%" y="1em" dx="-10"
+              text-anchor="end">Mixing</text>
+        <text x="50%" y="1em" dx="10"
+              text-anchor="start">BLOCK</text>
+		<!-- The first two elements are aligned horizontally.  One has mixed-case letters, the other is all block capitals. -->            
+        <text x="10%" y="3em"
+              >Three <tspan x="10%" dy="1.2em"
+              >line </tspan><tspan x="10%" dy="1.2em"
+              >text</tspan></text>
+		<!-- The next element uses positioned <tspan> segments to break it across three lines. -->
+        <text><textPath xlink:href="#p"
+              >TextPath</textPath></text> 
+		<!-- The final text element is arranged along a <textPath> that takes up approximately the same height on the page as the three-line text. -->
+    </g>
+</svg>
+<!-- 
+the stripes are different sizes in the multiline and <textPath> text than in the single-line text elements.  These elements have larger bounding boxes, which create larger pattern tiles.
+
+If you look specifically at the top row (the two single-line elements), you’ll notice that you can’t count a full five pairs of stripes from top to bottom of the letters.  You’ll also notice that the stripes are the same size for both words, despite the fact that the block capitals do not descend below the baseline.  This is a consequence of calculating the bounding box based on the full em-height of each character, even if the characters used do not fill that space.
+-->
