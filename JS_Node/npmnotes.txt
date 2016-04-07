@@ -1,0 +1,33 @@
+/*
+npm init:
+    starts project
+    discovers already-installed packages
+    ~/npm-init.js : edit to assert things about package (what test suite to use, etc.)
+
+npm install:
+    --save : saves to package
+    --save-dev : saves to dev dependencies
+    --save-optional : save for optional environments (will try optional dependency first)  
+    --save-bindle : included in tarball (not downloaded from internet) (use when it takes to long to install)
+
+npm isntall:
+    (mis-spelled - works :) )
+
+npm install --cache-min 999999
+    --only hit network if you don't have it
+
+simple run:
+    npm start
+    npm stop
+    npm test
+        scripts: {"start": "node ./index.js", "test": "node ./tests.js", "stop": "./commandstostopserver.js"}
+
+npm shrinkwrap:
+    locks everything down all the way down the tree
+
+npm dedupe:
+    deduplicates packages
+
+npm link:
+    version refer to each other for live copies (essential for complicated apps)
+*/
