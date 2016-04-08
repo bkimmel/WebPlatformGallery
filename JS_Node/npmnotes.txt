@@ -30,4 +30,29 @@ npm dedupe:
 
 npm link:
     version refer to each other for live copies (essential for complicated apps)
+
+npm update:
+    outdated prior to npm 3
+
+npm outdated:
+    shows what packages are outdated, what will be installed
+
+LIFECYCLE MANAGEMENT:
+
+npm publish --tag
+npm dist-tag
+    tells you what tag
+npm install package@beta
+npm install package@production
+
+npm run
+    npm run dev:setup
+        could run all setup thins?
+    npm run has devDependencies in path (not global like Gulp), so dependencies get installed locally
+
+webpack - get node modules working in browser
+
+sethvincent.com/css-via-npm/
+
+
 */
