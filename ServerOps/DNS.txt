@@ -1,0 +1,19 @@
+Essentially it maps resources "a name like www.google.com" to other resources "the IP address 172.211.31.12".  Many of the records exist to facilitate the
+"distributed" nature of the system. 
+
+A 
+-> Route names to IP addresses (xyz.com -> 195.162.32.42)
+AAAA 
+-> Same as A for IPv6
+CNAME / ALIAS / CANONICAL NAME
+-> Maps names to names "www." -> Web1.
+MX RECORD
+-> Identifies (smtp) mail server for domain
+SRV
+-> Locate specific services...contains data about the service: service, target, port and priority (sometimes created automatically by apps)
+SOA: "Start of Authority"
+-> "Primary name server".. has the most up-to-date info.. one per zone
+NS: Name Server
+-> Authority DNS server for that name.. does not cache.  NS records can be used to identify server with up-to-date DNS info
+PTR: Pointer IP -> Name
+-> Basically "reverse map" for A Records
