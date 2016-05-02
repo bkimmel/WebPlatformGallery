@@ -1,5 +1,7 @@
 Essentially it maps resources "a name like www.google.com" to other resources "the IP address 172.211.31.12".  Many of the records exist to facilitate the
-"distributed" nature of the system. 
+"distributed" nature of the system.
+
+"Resolver" (aka client) will query the "DNS Server" about how to get addresses for a "DNS Namespace". 
 
 A 
 -> Route names to IP addresses (xyz.com -> 195.162.32.42)
