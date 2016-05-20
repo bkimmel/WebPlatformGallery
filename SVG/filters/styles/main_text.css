@@ -1,0 +1,50 @@
+svg {
+    display: block;
+    width: 50%;
+    height: 40vh;
+    outline: 1px solid red;
+    margin: 20px auto;
+    background-color: rgba(0,0,0,.2);
+}
+
+svg text {
+    font-family: Verdana;
+    font-size: 2em;
+}
+
+.case1 text {
+    filter: url(#morphology);
+}
+
+.case2 text {
+    fill: rgba(100,100,150,.3);
+    filter: url(#fillnoise);
+}
+
+.case3 text {
+    filter: url(#edge);
+}
+
+.case4 text {
+    filter: url(#convolve);
+}
+
+.case5 text {
+    fill: rgba(100,100,150,.3);
+    filter: url(#convolve2);
+}
+
+.case6 text {
+    fill: rgba(100,100,150,.3);
+    filter: url(#convolve3);
+}
+
+.case7 text {
+    fill: rgba(100,100,150,.7);
+    filter: url(#offset);
+}
+
+.case8 text {
+    fill: rgba(100,100,150,.7);
+    filter: url(#offsetbevel);
+}

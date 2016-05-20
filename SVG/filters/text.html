@@ -1,0 +1,152 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sample</title>
+        <meta name="description" content="Sample page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/main_text.css">
+        <script src="scripts/main.js"></script>
+    </head>
+    <body>
+        <svg class="case1" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="fillnoise">
+        			<feTurbulence baseFrequency=".05,.004" width="200%" height="200%" top="-50%" type="fractalNoise" numOctaves="3" seed="0" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "1 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -1.2 1.1"
+					   in="FRACTAL-TEXTURE_10" result="turb"/>
+					 <feMorphology in="SourceGraphic" result="src_erode" operator="erode" radius="1" /><!-- Appears not to accept non-integer radia? -->
+					 <feMorphology in="SourceGraphic" result="src_erode_out" operator="dilate" radius="1" /><!-- Appears not to accept non-integer radia? -->
+					 <feComposite operator="in" in="turb" in2="src_erode" result="noise_comp" />
+					 <feComposite operator="in" in="turb" in2="src_erode_out" result="noise_comp_out" />
+					 <feMerge>
+						<!--Merges are applied in "source order".  See note below-->
+						<feMergeNode in="noise_comp_out"/>
+						<feMergeNode in="SourceGraphic"/>
+						<feMergeNode in="noise_comp"/>	
+					  </feMerge>	 
+        		</filter>
+        		<filter id="rectblend">
+        			<feTurbulence baseFrequency=".05,.004" width="200%" height="200%" top="-50%" type="fractalNoise" numOctaves="3" seed="0" result="FRACTAL-TEXTURE_10" />
+        			<feColorMatrix type="matrix" values=
+					   "0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 0 0,
+					   0 0 0 -1.2 .9"
+					   in="FRACTAL-TEXTURE_10" result="ALPHA_NOISE" />
+					  <feFlood flood-color="red" flood-opacity=".75" result="RED_FLOOD" />
+					 <feBlend mode="multiply" in="ALPHA_NOISE" in2="RED_FLOOD"/>
+        		</filter>
+        		<filter id="morphology">
+				  <feMorphology in="SourceAlpha" result="morphed" operator="dilate" radius="2" />
+				  <feMorphology in="SourceAlpha" result="erode" operator="erode" radius="1" />
+				  <feColorMatrix in="morphed" result="recolored" type="matrix" values="-1 0 0 1 0, 0 -1 0 1 0, 0 0 -1 1 0, 0 0 0 .5 0"/>
+				  <feColorMatrix in="erode" result="er_recolored" type="matrix" values="-1 0 0 1 0, 0 -1 0 1 0, 0 0 -1 1 0, 0 0 0 1 0"/>
+				  <feMerge>
+				  	<!--Merges are applied in "source order".  Switch source_graphic and er_colored to see (er_colored will pait underneath so you won't see it)-->
+					<feMergeNode in="recolored"/>
+					<feMergeNode in="SourceGraphic"/>
+					<feMergeNode in="er_recolored"/>	
+				  </feMerge>
+				</filter>
+        		<mask id="circlemask" maskContentUnits="userSpaceOnUse" >
+        			<circle cx="40" cy="40" r="40" style="stroke:#777; fill:#fff"/>
+        			<circle cx="40" cy="40" r="10" style="stroke:#777; fill:#000"/>
+        		</mask>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+        <svg class="case2" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+        <svg class="case3" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        		<filter id="edge">
+				   <feConvolveMatrix order="3"
+				   kernelMatrix="-1  -1  -1 -1   7  -1 -1  -1  -1" />
+			</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+         <svg class="case4" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        	    <!-- If the matrix sums to 0, it only paints the edges -->
+        		<filter id="convolve">
+        			 <feConvolveMatrix order="3"
+				   kernelMatrix="-1 -1 1
+				   				  -1 -1 1 
+				   				  1 1 0" />
+        		</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+        <svg class="case5" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        	    <!-- If the matrix is all zeros, it's "nothing"..can use as a place to "start" when designing convultions' -->
+        		<filter id="convolve2">
+        			 <feConvolveMatrix order="3"
+				   kernelMatrix="-.5 -.5 0
+				   				 -.5 -.5 0 
+				   				   0   0 2" result="bevel" />
+				   	<feBlend mode="screen" in="SourceGraphic" in2="bevel"/>
+				    
+        		</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+        <svg class="case6" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        	    
+        		<filter id="convolve3">
+        			 <feConvolveMatrix order="3"
+				   kernelMatrix="-5 -5 0
+				   				 -5 -5 0 
+				   				   0   0 20" result="bevel2" />
+				   	<feBlend mode="screen" in="SourceGraphic" in2="bevel2"/>
+				    
+        		</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+
+        <svg class="case7" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        	    
+        		<filter id="offset">
+        		   <feGaussianBlur stdDeviation=".5"/>
+				   <feOffset dx="4" dy="4" result="B"/>
+				   <feMerge>
+						  <feMergeNode in="B"/>
+						  <feMergeNode in="SourceGraphic"/>
+				   </feMerge>
+        		</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+
+        <svg class="case8" viewBox="0 0 100 100"  preserveAspectRatio="xMidYMid meet">
+        	<defs>
+        	    <!-- If the matrix sums to 0, it only paints the edges -->
+        		<filter id="offsetbevel">
+        			 <feConvolveMatrix order="3"
+				   kernelMatrix="-1 -1 1
+				   				  -1 -1 1 
+				   				  1 1 0" />
+				   	 <feOffset dx="2" dy="2" result="offbevel"/>
+				   	 <feMerge>
+						  <feMergeNode in="offbevel"/>
+						  <feMergeNode in="SourceGraphic"/>
+				   </feMerge>
+        		</filter>
+        	</defs>
+        	<text  x="50" y="50" text-anchor="middle" dominant-baseline="middle">Hello World</text>
+        </svg>
+                        
+	</body>
+</html>
