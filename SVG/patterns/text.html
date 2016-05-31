@@ -1,0 +1,36 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sample Patterns</title>
+        <meta name="description" content="Sample page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/main_patterns.css">
+        <script src="scripts/main.js"></script>
+    </head>
+    <body>
+    	<svg>
+			<title xml:lang="en">Striped Pattern</title>
+			<defs>
+				<!-- Default: pattern units for x,width,height,etc. for tiles are in Object Bounding Box coordinates, but pattern content units are userSpaceOnUse -->
+				<pattern id="stripes" x="5%" width="10%" height="100%">
+					<line x1="3" x2="3" y2="100%" stroke="maroon" />
+					<line x1="9" x2="9" y2="100%" stroke="gold" />
+					<line x1="15" x2="15" y2="100%" stroke="tomato" />
+				</pattern>
+			</defs>
+			<g stroke="royalBlue" fill="url(#stripes)">
+				<rect x="0.1in" y="0.1in" width="3.8in" height="1in" />
+				<rect x="0.1in" y="1.5in" width="90%" height="1in" />
+			</g>
+		</svg>
+		<svg style="width: 80%;">
+			<title xml:lang="en">Striped Pattern</title>
+			<g stroke="royalBlue" fill="url(#stripes)">
+				<rect x="0.1in" y="0.1in" width="3.8in" height="1in" />
+				<rect x="0.1in" y="1.5in" width="90%" height="1in" />
+			</g>
+		</svg>                             
+	</body>
+</html>
