@@ -15,9 +15,9 @@
 			<defs>
 				<!-- Default: pattern units for x,width,height,etc. for tiles are in Object Bounding Box coordinates, but pattern content units are userSpaceOnUse -->
 				<pattern id="stripes" x="5%" width="10%" height="100%">
-					<line x1="3" x2="3" y2="100%" stroke="maroon" />
-					<line x1="9" x2="9" y2="100%" stroke="gold" />
-					<line x1="15" x2="15" y2="100%" stroke="tomato" />
+					<line x1="3" x2="3" y2="100%" stroke="maroon" stroke-width="6"/>
+					<line x1="9" x2="9" y2="100%" stroke="gold" stroke-width="6"/>
+					<line x1="15" x2="15" y2="100%" stroke="tomato" stroke-width="6"/>
 				</pattern>
 			</defs>
 			<g stroke="royalBlue" fill="url(#stripes)">
@@ -25,6 +25,60 @@
 				<rect x="0.1in" y="1.5in" width="90%" height="1in" />
 			</g>
 		</svg>
+		<svg>
+			<title xml:lang="en">Striped Pattern</title>
+			<defs>
+				<pattern id="stripes2" x="5%" width="10%" height="100%" patternUnits="userSpaceOnUse">
+					<line x1="3" x2="3" y2="100%" stroke="maroon" stroke-width="6"/>
+					<line x1="9" x2="9" y2="100%" stroke="gold" stroke-width="6"/>
+					<line x1="15" x2="15" y2="100%" stroke="tomato" stroke-width="6"/>
+				</pattern>
+			</defs>
+			<g stroke="royalBlue" fill="url(#stripes2)">
+				<rect x="0.1in" y="0.1in" width="3.8in" height="1in" />
+				<rect x="0.1in" y="1.5in" width="90%" height="1in" />
+			</g>
+		</svg>
+		<svg>
+			<title xml:lang="en">Striped Pattern</title>
+			<defs>
+				<pattern id="stripes3" x="0" width="50%" height="50%" patternContentUnits="objectBoundingBox">
+					<rect x="0" y="0" width=".1" height=".25" fill="maroon"/>
+					<rect x="50%" y="0" width="50%" height="100%" fill="gold"/>
+				</pattern>
+			</defs>
+			<g stroke="royalBlue" fill="url(#stripes3)">
+				<rect x="0.1in" y="0.1in" width="3.8in" height="1in" />
+				<rect x="0.3in" y="1.5in" width="90%" height="1.5in" />
+			</g>
+		</svg>
+		<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMin meet">
+			<title xml:lang="en">Striped Pattern</title>
+			<defs>
+				<pattern id="stripes4" x="10" width="25%" height="33%" patternContentUnits="objectBoundingBox">
+					<rect x="0" y="0" width=".24" height=".25" fill="maroon"/>
+					<rect x="0" y=".25" width=".1" height=".25" fill="gold"/>
+				</pattern>
+			</defs>
+			<g stroke="royalBlue" fill="url(#stripes4)">
+				<rect x="1" y="5" width="100" height="40" />
+				<rect x="1" y="47" width="90" height="40" />
+			</g>
+		</svg>
+		<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMin meet">
+			<title xml:lang="en">Striped Pattern</title>
+			<!-- A strange example where the patternUnits (the tile measurements) are fixed to the userSpace (the viewbox of the svg) but the conte units are scaled to the bounding box - not particularly useful, but a good demonstration -->
+			<defs>
+				<pattern id="stripes5" x="10" width="70" height="33" patternUnits="userSpaceOnUse" patternContentUnits="objectBoundingBox">
+					<rect x="0" y="0" width="25%" height=".25" fill="maroon"/>
+					<rect x="0" y=".25" width=".1" height=".25" fill="gold"/>
+				</pattern>
+			</defs>
+			<g stroke="royalBlue" fill="url(#stripes5)">
+				<rect x="1" y="5" width="100" height="40" />
+				<rect x="1" y="47" width="50" height="50" />
+			</g>
+		</svg>                                      
 		<svg style="width: 80%;">
 			<title xml:lang="en">Striped Pattern</title>
 			<g stroke="royalBlue" fill="url(#stripes)">
