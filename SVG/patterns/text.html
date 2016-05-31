@@ -69,13 +69,13 @@
 			<title xml:lang="en">Striped Pattern</title>
 			<!-- A strange example where the patternUnits (the tile measurements) are fixed to the userSpace (the viewbox of the svg) but the conte units are scaled to the bounding box - not particularly useful, but a good demonstration -->
 			<defs>
-				<pattern id="stripes5" x="10" width="70" height="33" patternUnits="userSpaceOnUse" patternContentUnits="objectBoundingBox">
-					<rect x="0" y="0" width="25%" height=".25" fill="maroon"/>
+				<pattern id="stripes5" x="10" width="70" height="20" patternUnits="userSpaceOnUse" patternContentUnits="objectBoundingBox">
+					<rect x="0" y="0" width=".4" height=".20" fill="maroon"/>
 					<rect x="0" y=".25" width=".1" height=".25" fill="gold"/>
 				</pattern>
 			</defs>
 			<g stroke="royalBlue" fill="url(#stripes5)">
-				<rect x="1" y="5" width="100" height="40" />
+				<rect x="1" y="5" width="150" height="30" />
 				<rect x="1" y="47" width="50" height="50" />
 			</g>
 		</svg>                                      
