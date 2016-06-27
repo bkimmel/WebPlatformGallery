@@ -1,0 +1,32 @@
+<!-- https://bkimmel.github.io/ -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Graphs</title>
+        <meta name="description" content="Sample page">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/main_graph.css">
+        <script src="scripts/main.js"></script>
+    </head>
+    <body>
+        <svg viewBox="0 0 400 100"  preserveAspectRatio="xMidYMid meet">
+        	<rect x="25" y="25" width="50" height="50" fill="white"/>
+        	<rect x="0" y="0" width="400" height="100" fill="rgba(255,255,255,.3)"/>
+        	<rect x="0" y="-20" width="400" height="140" fill="rgba(255,0,0,.1)"/>
+        	<rect x="0" y="0" width="5" height="5" fill="black"/>
+        </svg>
+        <svg class="graph" viewBox="0 0 400 100"  preserveAspectRatio="xMidYMid meet">
+        	<rect class="crt" x="350" y="100" width="20" height="50" stroke="black" />
+        	<line class="ln_crt" x1="320" x2="320" y2="100" />
+        	<rect class="crt" x="270" y="100" width="20" height="70" stroke="black" />
+        	<line class="hist_hour" x1="240" x2="240" y1="90" y2="100" stroke="black" />
+        	<rect class="crt" x="190" y="100" width="20" height="60" stroke="black" />
+        	<line class="hist_6hour" x1="160" x2="160" y1="90" y2="100" stroke="black" />
+        	<rect class="crt" x="110" y="100" width="20" height="70" stroke="black" />
+        	<line class="hist_day" x1="80" x2="80" y1="90" y2="100" stroke="black" />
+        	<rect class="crt" x="30" y="100" width="20" height="30" stroke="black" />
+        </svg>
+                        
+	</body>
+</html>

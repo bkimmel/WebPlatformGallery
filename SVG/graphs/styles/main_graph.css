@@ -1,0 +1,53 @@
+svg {
+    display: block;
+    width: 50vw;
+    height: 40vh;
+    outline: 1px solid;
+    margin: 10px auto;
+    background-color: rgba(0,0,0,.2);
+}
+
+.graph {
+    width: 50vw;
+    height: 12.5vw;
+    background-color: transparent;
+    shape-rendering: crispEdges;
+    
+    stroke-width: .5;
+    counter-reset: rect;
+}
+
+    .graph rect {
+        width: 20;
+        fill: red;
+        transform: translateY(-0%) scale(1, 1.1);
+        transition-property: transform;
+        transition-timing-function: linear;
+        transition-duration: .3s;
+    }
+    .graph:hover rect {
+        transform: translateY(-100%) scale(1, 1.1);
+        transition-property: transform;
+        transition-timing-function: cubic-bezier(.04,1.05,.04,1.05);
+        transition-duration: 1.3s;
+        shape-rendering: optimizeSpeed;
+    }
+
+    .graph:hover rect:nth-of-type(2) {
+        transition-delay: .1s;
+    }
+    .graph:hover rect:nth-of-type(3) {
+        transition-delay: .2s;
+    }
+    .graph:hover rect:nth-of-type(4) {
+        transition-delay: .3s;
+    }
+    .graph:hover rect:nth-of-type(5) {
+        transition-delay: .4s;
+    }
+
+    .graph line.ln_crt {
+        stroke: black;
+        stroke-dasharray: 2, 5;
+    }
+

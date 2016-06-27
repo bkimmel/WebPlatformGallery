@@ -1,0 +1,22 @@
+svg {
+    display: block;
+    width: 50%;
+    height: 40vh;
+    outline: 1px solid red;
+    margin: 20px auto;
+}
+
+
+.filtertest.base rect {
+    fill: red;
+    stroke: black;
+    filter: url(#rectnoise);
+}
+
+.filtertest.blend rect {
+    fill: red;
+    stroke: black;
+
+    filter: url(#rectblend);
+    mask: url(#circlemask);
+}
