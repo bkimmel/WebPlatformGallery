@@ -23,7 +23,7 @@ svg {
         transform: translateY(-0%) scale(1, 1.1);
         transition-property: transform;
         transition-timing-function: linear;
-        transition-duration: .3s;
+        transition-duration: 2s;
     }
     .graph:hover rect {
         transform: translateY(-100%) scale(1, 1.1);
