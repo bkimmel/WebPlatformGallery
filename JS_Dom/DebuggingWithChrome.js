@@ -63,6 +63,10 @@ function assertstop() {
 assertstop(1 === 1, 0 === 0); //nothing
 assertstop(true, true, false); //breaks and allows you to inspect (use console.trace to go back through the stack and see where it failed)
 
+//using MutationObserver.  Make sure "aync debugging" is checked on DevToolss
+var mo = new MutationObserver(function(e){ debugger; });
+mo.observe(document.querySelector('#cdList'),{'characterData': true, 'childList': true, 'subtree': true});
+
 //DEBUGGING EVENTS:
 //1. be cautious - jQuery events jQuery('#mydiv').trigger('submit') - do not always fire native handlers in older versions of jQuery.
 //2. jQuery handlers do not account for useCapture
