@@ -3,7 +3,8 @@ document.querySelectorAll('script');
 //and look at the last script - which is often the offender
 
 //What the hell is happening to this object and why?
-Object.observe(thobjectinquestion, function(change){ console.log(change); debugger; });
+//Deprecated in Chrome: Now use ES6 Proxies
+//Object.observe(thobjectinquestion, function(change){ console.log(change); debugger; });
 
 //How is that object even getting there in the first place?
 //In Chrome Event Listener Breakpoints -> Script -> First Script Load
@@ -50,8 +51,10 @@ profileEnd('This part.');
 inspect(document.querySelector('#mydiv'));
 
 //What is messing with this DOM object?
-  //--> Go to 'elements' --> Right click the element in question --> Select 'break on subtree modifications' or 'break on attribute modifications' -->  Type console.trace() when you get to the break.
-
+	//using MutationObserver.  Make sure "aync debugging" is checked on DevToolss
+	var mo = new MutationObserver(function(e){ debugger; });
+	mo.observe(document.querySelector('#cdList'),{'characterData': true, 'childList': true, 'subtree': true});
+  
 //I'm keeping my eye on you, mister Precondition:
 console.assert(precondition == true, "Precondition not met")
 
@@ -63,9 +66,7 @@ function assertstop() {
 assertstop(1 === 1, 0 === 0); //nothing
 assertstop(true, true, false); //breaks and allows you to inspect (use console.trace to go back through the stack and see where it failed)
 
-//using MutationObserver.  Make sure "aync debugging" is checked on DevToolss
-var mo = new MutationObserver(function(e){ debugger; });
-mo.observe(document.querySelector('#cdList'),{'characterData': true, 'childList': true, 'subtree': true});
+
 
 //DEBUGGING EVENTS:
 //1. be cautious - jQuery events jQuery('#mydiv').trigger('submit') - do not always fire native handlers in older versions of jQuery.
