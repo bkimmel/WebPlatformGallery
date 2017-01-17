@@ -34,3 +34,40 @@ myReader.read().then(function(d){ debugger; console.log('stream reader .read() r
 
 //we write a message to the port
 myPort.postMessage('message');
+
+/*********** .tee example *********/
+function wrapIterator(i){
+    if(!i[Symbol.iterator]){
+        return new Error('Symbol.iterator must be an iterator');
+    }
+    let feeder = (function*(){
+        yield* i;
+    })();
+    return new ReadableStream({
+      start(controller) {
+           let _data = feeder.next();
+           controller[_data.done ? 'close': 'enqueue'](_data.value);
+      },
+      pull(controller) {
+            let _data = feeder.next();
+            controller[_data.done ? 'close': 'enqueue'](_data.value);
+      },
+      cancel() {
+            // This is called if the reader cancels
+            feeder.close();
+      }
+    });
+}
+
+var myReadableStream = wrapIterator([1,2,3]);
+var myTee = myReadableStream.tee();
+var stream1 = myTee[0], stream2 = myTee[1];
+var reader1 = stream1.getReader(), reader2 = stream2.getReader();
+reader1.read().then((v)=>{ console.log('%O',v) });
+reader2.read().then((v)=>{ console.log('%O',v) });
+
+
+
+
+
+
