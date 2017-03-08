@@ -1,2 +1,4 @@
 will-change: don't put it on too many things
 contain: layout=stop checking for dirties at container, size=contents do not effect size of container, paint=stuff stays in container, style=stuff inside doesn't effect container
+.on('change', (e)=>{ $(e.target).val()//new value });
+tspan elements don't create their own bounding box, they use the box from their containing <text> element instead
