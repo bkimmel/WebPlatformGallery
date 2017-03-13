@@ -1,3 +1,4 @@
+utf-8 can't be used in css properties (i.e. line-height: 1; ~= line-height: \000031;) even though spec suggests it kind of should be (? https://www.w3.org/TR/CSS2/syndata.html#characters )
 will-change: don't put it on too many things
 contain: layout=stop checking for dirties at container, size=contents do not effect size of container, paint=stuff stays in container, style=stuff inside doesn't effect container
 .on('change', (e)=>{ $(e.target).val()//new value });
