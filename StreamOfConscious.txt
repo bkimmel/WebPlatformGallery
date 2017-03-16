@@ -1,3 +1,4 @@
+50 cheat sheets: https://medium.com/wd-tips-tricks/50-essential-cheatsheets-guides-docs-for-web-designers-7e80d78853c1?imm_mid=0eeb35&cmp=em-web-na-na-newsltr_20170315#.5yxv69k2k
 Isolate your team from "bad day" effects in interviews
 Zindex stacking context can be set by a number of properties and stacking contexts create a "heirarchy"
 Firefox doesn't do .innerText
