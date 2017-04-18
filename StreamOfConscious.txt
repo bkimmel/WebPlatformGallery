@@ -24,3 +24,5 @@ csstriggers.com
 
 What does "chunk boundary friendly" mean?
   It means that a replace should happen even if the string to be replaced is between streaming chunks of data. For example, say I     do something like this
+
+<button> elements in forms are implicity given type="submit" unless otherwise typed.
