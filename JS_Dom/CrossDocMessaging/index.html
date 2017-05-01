@@ -17,5 +17,10 @@
 	<script>
 		
 		window.addEventListener('message', function(){ console.log('window: got message from iframe'); });
+		
+		document.querySelector('h1').addEventListener('click', function(e){
+			console.log('window: sending message to iframe');
+			document.querySelector('iframe').contentWindow.postMessage('hi','*' /* In practice, never use the * for the message target. */);	
+		});
 	</script>
 </html>
