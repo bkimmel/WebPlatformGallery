@@ -11,7 +11,7 @@
 	</body>
 	<script>
 		document.querySelector('h2').addEventListener('click', function(){
-			console.log('hi');
+			console.log('iframe: sending message to parent');
 			parent.postMessage('hi from parent.postMessage', '*');
 			
 		});
