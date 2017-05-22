@@ -60,4 +60,8 @@ window.postMessage(ab,'*',[ab]);
 //Similar for worker.
 //*But ab is now "neutered".  You can't really do anything with it.  The purpose of this is to really quickly transfer data between contexts (window and iframe or window and Worker)
 console.log('ab.byteLength /*after transfer*/ = %s', ab.byteLength);
-'.:'
+
+//Typed arrays must have the correct "length" of the underlying buffer to fit the declared type of the Array. E.g. a UInt16 Array buffer length must be divisible by 2. UInt32 Array byte-length must be divisible by 4.
+var u8 = new Uint8Array(new ArrayBuffer(1)); //OK
+var u16 = new Uint16Array(u8.buffer); //RangeError
+var u32 = new Uint32Array(u8.buffer); //RangeError
