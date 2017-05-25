@@ -42,4 +42,26 @@ function setPerf(nm) {
 //to tally:
 localStorage.getItem('complete').split(',').map(function(v){ return parseInt(v, 10); }).reduce(function(a, v, i, l){ return a + ( v / l.length) }, 0);
 
+//Using it to measure thrashing vs. batching:
 
+var elementcount = 3000;
+
+performance.mark('Start_Thrash');
+for(var i = 0; i < elementcount; i++){
+	$('body').append('<p>' + i + '</p>');
+}
+performance.mark('End_Thrash');
+
+
+performance.mark('Start_Batch');
+var append = '';
+for(var i = 0; i < elementcount; i++){
+    append += '<p data-n="' + i + '">' + i + '</p>';
+}
+$('body').append(append);
+performance.mark('End_Batch');
+
+performance.measure('Thrash','Start_Thrash','End_Thrash');
+performance.measure('Batch','Start_Batch','End_Batch'); //See on performance panel of devtools
+
+console.log('Thrash: %s', performance.getEntriesByName('End_Thrash')[0].startTime - performance.getEntriesByName('Start_Thrash')[0].startTime);
