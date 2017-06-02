@@ -1,5 +1,8 @@
 Mutation Observers for DOM Debugging
 
+Flexbox article 
+https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
+
 don't forget x y and width & height on masks (#fff shows #000 hides)
 
 <use> elements can go in masks
