@@ -53,7 +53,7 @@ inspect(document.querySelector('#mydiv'));
 //What is messing with this DOM object?
 	//using MutationObserver.  Make sure "aync debugging" is checked on DevToolss
 	var mo = new MutationObserver(function(e){ debugger; });
-	mo.observe(document.querySelector('#cdList'),{'characterData': true, 'childList': true, 'subtree': true});
+	mo.observe(document.querySelector('#cdList'), {'characterData': true, 'childList': true, 'subtree': true, 'attributes': true});
   
 //I'm keeping my eye on you, mister Precondition:
 console.assert(precondition == true, "Precondition not met")
