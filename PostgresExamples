@@ -1,0 +1,19 @@
+INSERT INTO public."PushSubscriptions" VALUES (
+  '{ "name": "Book the First", "author": { "first_name": "Bob", "last_name": "White" } }');
+
+SELECT sub->>'name' FROM public."PushSubscriptions";
+
+SELECT json_each(json) FROM (	SELECT sub AS json FROM (
+        SELECT sub
+        FROM public."PushSubscriptions"
+        fetch first 1 row only
+    ) a
+) b
+
+SELECT (json_each(json)).*, rw FROM (	
+    SELECT sub AS json, ROW_NUMBER() OVER () AS rw
+ 	FROM (
+        SELECT sub
+        FROM public."PushSubscriptions"
+    ) a
+) b
