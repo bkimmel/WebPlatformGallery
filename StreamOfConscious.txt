@@ -1,5 +1,7 @@
 Mutation Observers for DOM Debugging
 
+Use novakidate and .validity property to custom style forms
+
 Flexbox article 
 https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
 
