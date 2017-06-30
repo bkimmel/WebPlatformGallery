@@ -1,6 +1,8 @@
+Some CORS responses don't expose header data to the Fetch API :: https://fetch.spec.whatwg.org/#concept-filtered-response
+
 Mutation Observers for DOM Debugging
 
-Use novakidate and .validity property to custom style forms
+Use novalidate and .validity property to custom style forms
 
 Flexbox article 
 https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
