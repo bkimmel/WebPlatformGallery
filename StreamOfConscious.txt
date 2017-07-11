@@ -1,3 +1,5 @@
+Preload images texhique: https://gist.github.com/bkimmel/e56e581bfe0827740ecd85a567b36dcc
+
 Some CORS responses don't expose header data to the Fetch API :: https://fetch.spec.whatwg.org/#concept-filtered-response
 
 Mutation Observers for DOM Debugging
