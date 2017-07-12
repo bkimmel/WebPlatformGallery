@@ -33,7 +33,7 @@ console.log('\uD835\uD800'); //=> 1D400 => Math Bold A
 //ES6 Only:
 //Array.from('\uD83D\uDC04').length //Will count the symbol only once in the length.
 
-console.log('man\u0303ana'); //=> Here +0303 is a "combining" symbol that creates a surrogate pair with n.
+console.log('man\u0303ana'); //=> Here +0303 is a "combining" symbol that creates a diacritical mark above n. +0303 and other diacriticals "stack" above the first non-diacritical character that appears before them in byte order.
 var str = 'man\u0303ana';
 console.log(str.split('').reverse().join('')); //This will screw everything up.
 
