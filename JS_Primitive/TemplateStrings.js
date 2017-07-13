@@ -28,3 +28,8 @@ console.log(greet); //=> Hi Kimmel
 myname = 'Brent';
 console.log(greet); //=> Hi Kimmel, because that's how it was bound before...
 console.log(`Hello ${myname}`); //=> Hi Brent
+
+//String.raw called with template literals are the closest thing to "literal" strings, where even backslashes are evaluated 'as is'
+String.raw`I can print \` `;
+//But this will error: the ending literal tag can't be escaped:
+String.raw`I can print \`
