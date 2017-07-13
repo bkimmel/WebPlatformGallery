@@ -6,7 +6,7 @@ Some CORS responses don't expose header data to the Fetch API :: https://fetch.s
 
 Mutation Observers for DOM Debugging
 
-Use novalidate and .validity property to custom style forms
+Use novalidate attribute (which prevents validation on submit) and .validity (which indicates why the field won't validate) property to custom style forms
 
 Flexbox article 
 https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b
