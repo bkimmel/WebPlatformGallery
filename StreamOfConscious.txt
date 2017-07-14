@@ -1,5 +1,7 @@
 String.raw`\` returns the \ instead of treating it as an escape character
 
+The "return" method of iterators is called on abrupt termination (break, throw, etc.) And allows thr iterator to close and clean up
+
 Preload images technique: https://gist.github.com/bkimmel/e56e581bfe0827740ecd85a567b36dcc
 
 Some CORS responses don't expose header data to the Fetch API :: https://fetch.spec.whatwg.org/#concept-filtered-response
