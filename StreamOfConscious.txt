@@ -1,3 +1,5 @@
+CSS font-display: can control the timing of font-face renders (auto, block, swap, fallback, optional)
+
 String.raw`\` returns the \ instead of treating it as an escape character
 
 For Arrow functions, this is still evaluated at runtime so e.g. an arrow function called *inside* an object method o.method will get o as "this"
