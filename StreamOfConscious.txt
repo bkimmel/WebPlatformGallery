@@ -1,3 +1,5 @@
+"Start every project by making the body text look good, then worry about the rest...15-25px size...120-145% line-height...45-90 chars/line" (from: http://practicaltypography.com/typography-in-ten-minutes.html )
+
 CSS font-display: can control the timing of font-face renders (auto, block, swap, fallback, optional)
 
 String.raw`\` returns the \ instead of treating it as an escape character
