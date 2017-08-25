@@ -1,3 +1,5 @@
+React concepts article: https://medium.freecodecamp.org/all-the-fundamental-react-js-concepts-jammed-into-this-single-medium-article-c83f9b53eac2
+
 hyphens:auto along with text-align: justify (when it works on platform) does body-text jutification.
 
 performance.getEntriesByType("paint") -> paint timing in Chrome, shows 'first-paint' & 'first-contentful-paint'
