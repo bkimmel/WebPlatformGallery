@@ -1,5 +1,7 @@
 content: in css can take URLs for images
 
+Svg gradients get their own coordinate systems.  Userspaceonuse uses the one for the host svg, objectboundingbox uses the ciordinate system of the bounding box with ththe top lefleft corner as the origin for transforms: coordinates are "stretched" to match the containing rectangle.
+
 React concepts article: https://medium.freecodecamp.org/all-the-fundamental-react-js-concepts-jammed-into-this-single-medium-article-c83f9b53eac2
 
 hyphens:auto along with text-align: justify (when it works on platform) does body-text jutification.
