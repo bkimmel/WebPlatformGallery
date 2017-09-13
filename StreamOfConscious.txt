@@ -1,3 +1,5 @@
+for SVG gradients: A 1px length equals 1 user unit equals 100% of the width or height under an ObjectBoundingBox corrdinate system.
+
 content: in css can take URLs for images
 
 Gradients can xlink:href toto other gradients to use their stops.
