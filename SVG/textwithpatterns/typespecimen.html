@@ -52,7 +52,7 @@
                 <feComposite operator="arithmetic" in="SourceGraphic" in2="erode_tinted" k1="0.85" k2=".85" k3="0.75" k4="0" />
             </filter>
             <filter id="fractalext">
-                <feTurbulence id="fe-turb-fractal" type="fractalNoise" baseFrequency="0.2025" numOctaves="1" result="fractalext_turb"/>
+                <feTurbulence id="fe-turb-fractal" type="fractalNoise" baseFrequency="0.4025" numOctaves="1" result="fractalext_turb"/>
                 <feComposite operator="in" in="fractalext_turb" in2="SourceAlpha" result="fractaext_cutturb" />
                 <feColorMatrix in="fractaext_cutturb" type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 5 0" result="fractalext_matr"/>
                 <feGaussianBlur in="fractalext_matr" result="fractalext_blur" stdDeviation="0.15"/>
@@ -96,7 +96,7 @@
         <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Tint Erosion&rdquo; &mdash; erode, blur, dilate &amp; composite</text>
     </svg>
     <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
-        <use xlink:href="#source" filter="url(#fractalext)" style="fill: hsla(210, 20%, 20%, .95);" />
+        <use xlink:href="#source" filter="url(#fractalext)" style="fill: hsla(210, 0%, 10%, .99);" />
         <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Fractal Halo&rdquo; &mdash; turbulence, composite, blur, offset &amp; merge</text>
     </svg>
 
