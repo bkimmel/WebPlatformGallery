@@ -68,6 +68,32 @@
                   <feMergeNode in="SourceGraphic"/>
                 </feMerge>
             </filter>
+            <filter id="turbtrans">
+                <feTurbulence id="fe-turb-a" type="turbulence" baseFrequency="0.1725" seed="11" numOctaves="6" result="turbtrans_noisea"/>
+                <feComponentTransfer in="turbtrans_noisea" result="turbtrans_transfera">
+                    <feFuncR type="linear" slope="0" intercept="0"></feFuncR>
+                    <feFuncG type="linear" slope="0" intercept="0"></feFuncG>
+                    <feFuncB type="linear" slope="0" intercept="0"></feFuncB>
+                    <feFuncA type="linear" slope="2.75" intercept="-.75"></feFuncB>
+                 </feComponentTransfer>
+                 <feFlood flood-color="#ecc200" flood-opacity="1" result="turbtrans_flooda" />
+                 <feComposite operator="in" in="turbtrans_flooda" in2="turbtrans_transfera" result="turbtrans_compa" />
+
+                <feTurbulence id="fe-turb-b" type="fractalNoise" baseFrequency="0.3025" seed="7" numOctaves="3" result="turbtrans_noisea"/>
+                <feComponentTransfer in="turbtrans_noisea" result="turbtrans_transferb">
+                    <feFuncR type="linear" slope="0" intercept="0"></feFuncR>
+                    <feFuncG type="linear" slope="0" intercept="0"></feFuncG>
+                    <feFuncB type="linear" slope="0" intercept="0"></feFuncB>
+                    <feFuncA type="linear" slope=".75" intercept=".25"></feFuncB>
+                 </feComponentTransfer>
+                 <feFlood flood-color="#0098db" flood-opacity="1" result="turbtrans_floodb" />
+                 <feComposite operator="in" in="turbtrans_floodb" in2="turbtrans_transferb" result="turbtrans_compb" />
+                 
+                 <feComposite operator="over" in="turbtrans_compa" in2="turbtrans_compb" result="turbtrans_over" />
+
+                 <feComposite operator="atop" in="turbtrans_over" in2="SourceAlpha" result="turbtrans_atopa" />
+                 
+            </filter>
         </defs>
     </svg>
     <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
@@ -79,15 +105,15 @@
         <line x1="0"  y1="25" x2="100" y2="25"  style="stroke: hsla(0,0%,0%,.2); stroke-width: .10;"/>
         <text x="100" y="25.1" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">y = 25</text>
 
-        <line x1="1em" x2="1em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <line x1="1em" x2="1em" y1="4.5" y2="25.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
         <text x="0.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 0em</text>
-        <line x1="0em" x2="0em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <line x1="0em" x2="0em" y1="4.5" y2="25.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
         <text x="50.1" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 50</text>
-        <line x1="50" x2="50" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>        
+        <line x1="50" x2="50" y1="4.5" y2="25.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>        
         <text x="1.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 1em</text>
-        <line x1="2em" x2="2em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <line x1="2em" x2="2em" y1="4.5" y2="25.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
         <text x="2.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 2em</text>
-        <text id="source" x="50" y="20" contenteditable="true" fill="inherit">The Source</text>
+        <text id="source" x="50" y="20" contenteditable="true" fill="inherit" stroke="inherit" stroke-width="inherit">The Source</text>
         <line x1="10" x2="90" y1="20" y2="20" style="stroke: hsla(0,80%,50%,.2);  stroke-width: .10;"></line>
         <text y="20.5" x="75" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">default baseline = 20</text>
     </svg>
@@ -97,7 +123,12 @@
     </svg>
     <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
         <use xlink:href="#source" filter="url(#fractalext)" style="fill: hsla(210, 0%, 10%, .99);" />
-        <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Fractal Halo&rdquo; &mdash; turbulence, composite, blur, offset &amp; merge</text>
+        <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Fractal Halo&rdquo; &mdash; fractal noise, composite, blur, offset &amp; merge</text>
+    </svg>
+    <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
+        <use xlink:href="#source" style="fill: hsla(210, 0%, 10%, .99); stroke-width: .14; stroke: hsl(49, 95%, 10%);" text-rendering="geometricPrecision"/>
+        <use xlink:href="#source" filter="url(#turbtrans)" style="fill: hsla(210, 0%, 10%, .99);" />
+        <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Brand Marble&rdquo; &mdash; turbulence, component transfer &amp; merge with flood</text>
     </svg>
 
 </body>
