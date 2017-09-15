@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vector Type Sample</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600i,700,700i,900,900i" rel="stylesheet">
+    <style>
+        html {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Raleway, sans-serif;
+            font-weight: 900;
+        }
+        .defs-only {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+        }
+
+        .typeblock {
+            box-sizing: border-box;
+            display: block;
+            text-anchor: middle;
+            border: 1px solid hsla(0,0%,80%,.55);
+        }
+        .typeblock.lg {
+            width: 100%;
+            height: 24em;
+        }
+        .typeblock text:not(#source){
+            font-family: Raleway;
+            font-weight: 600;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <svg class="defs-only" style="heigth: 0; width: 0;" viewBox="0 0 1 1">
+        <defs>
+            <filter id="erode">
+                <feMorphology in="SourceGraphic" result="erode_eroded" operator="erode" radius="1" />
+                <feGaussianBlur in="erode_eroded" result="erode_blurred" stdDeviation="1.15"/>
+                <feMorphology in="erode_blurred" result="erode_dilated" operator="dilate" radius="1" />
+                <!-- k1=both k2=in1 k3=in2 k4=- -->
+                <feFlood flood-color="red" flood-opacity=".35" result="erode_red" />
+                <feComposite operator="in" in="erode_red" in2="erode_dilated" k1="1" k2="0" k3="0" k4="0" result="erode_tinted" />
+                <feComposite operator="arithmetic" in="SourceGraphic" in2="erode_tinted" k1="0.85" k2=".85" k3="0.75" k4="0" />
+            </filter>
+            <filter id="fractalext">
+                <feTurbulence id="fe-turb-fractal" type="fractalNoise" baseFrequency="0.2025" numOctaves="1" result="fractalext_turb"/>
+                <feComposite operator="in" in="fractalext_turb" in2="SourceAlpha" result="fractaext_cutturb" />
+                <feColorMatrix in="fractaext_cutturb" type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 5 0" result="fractalext_matr"/>
+                <feGaussianBlur in="fractalext_matr" result="fractalext_blur" stdDeviation="0.15"/>
+                <feOffset in="fractalext_blur" dx="-.25" dy=".25" result="fractalext_offset"/>
+                <feOffset in="fractalext_blur" dx=".25" dy=".25" result="fractalext_offsetb"/>
+                <feOffset in="fractalext_blur" dx="-.25" dy="-.25" result="fractalext_offsetc"/>
+                <feOffset in="fractalext_blur" dx=".25" dy="-.25" result="fractalext_offsetd"/>
+                <feMerge>
+                  <feMergeNode in="fractalext_offset"/>
+                  <feMergeNode in="fractalext_offsetb"/>
+                  <feMergeNode in="fractalext_offsetc"/>
+                  <feMergeNode in="fractalext_offsetd"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
+        <line x1="0"  y1="5" x2="100" y2="5"  style="stroke: hsla(0,0%,0%,.2); stroke-width: .10;"/>
+        <text x="100" y="5.1" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">y = 5</text>
+        <text x="50" y="4.5" style="text-anchor: middle; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="baseline">Viewbox Coordinates: 0w,0h &mdash; 100w,30h</text>
+        <line x1="0"  y1="15" x2="100" y2="15"  style="stroke: hsla(0,0%,0%,.2); stroke-width: .10;"/>
+        <text x="100" y="15.1" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">y = 15</text>
+        <line x1="0"  y1="25" x2="100" y2="25"  style="stroke: hsla(0,0%,0%,.2); stroke-width: .10;"/>
+        <text x="100" y="25.1" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">y = 25</text>
+
+        <line x1="1em" x2="1em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <text x="0.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 0em</text>
+        <line x1="0em" x2="0em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <text x="50.1" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 50</text>
+        <line x1="50" x2="50" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>        
+        <text x="1.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 1em</text>
+        <line x1="2em" x2="2em" y1="5.5" y2="24.5" style="stroke: hsla(0,0%,0%,.2);  stroke-width: .10;"></line>
+        <text x="2.01rem" y="5.5" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">x = 2em</text>
+        <text id="source" x="50" y="20" contenteditable="true" fill="inherit">The Source</text>
+        <line x1="10" x2="90" y1="20" y2="20" style="stroke: hsla(0,80%,50%,.2);  stroke-width: .10;"></line>
+        <text y="20.5" x="75" style="text-anchor: start; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.2);" alignment-baseline="hanging">default baseline = 20</text>
+    </svg>
+    <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
+        <use xlink:href="#source" filter="url(#erode)" />
+        <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Tint Erosion&rdquo; &mdash; erode, blur, dilate &amp; composite</text>
+    </svg>
+    <svg class="typeblock lg" viewBox="0 0 100 30" preserveAspectRatio="xMidYMid meet" text-rendering="geometricPrecision">
+        <use xlink:href="#source" filter="url(#fractalext)" style="fill: hsla(210, 20%, 20%, .95);" />
+        <text y="21.5" x="90" style="text-anchor: end; font-size: 1.25; font-weight: 400; fill: hsla(0,0%,0%,.5);" alignment-baseline="hanging">&ldquo;Fractal Halo&rdquo; &mdash; turbulence, composite, blur, offset &amp; merge</text>
+    </svg>
+
+</body>
+</html>
