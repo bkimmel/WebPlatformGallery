@@ -1,3 +1,5 @@
+fieldset elements have a min-width assigned to them by default
+
 SVG font-size: in the style value, use px specifically... or use the presentation attribute. Otherwise Firefox doesn't interpret the font-size in user space
 
 for SVG gradients: A 1px length equals 1 user unit equals 100% of the width or height under an ObjectBoundingBox corrdinate system.
