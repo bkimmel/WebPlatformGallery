@@ -1,6 +1,6 @@
 fieldset elements have a min-width assigned to them by default
 
-In svg transforms in series allall the transforms are processed before the subject is painted, which is why translate(x y) rotate(a) translate(-x, -y) rotates around x y
+In svg transforms in series all the transforms are processed on the coordinate system before the subject is painted, which is why translate(x y) rotate(a) translate(-x, -y) rotates around x y
 
 SVG font-size: in the style value, use px specifically... or use the presentation attribute. Otherwise Firefox doesn't interpret the font-size in user space
 
