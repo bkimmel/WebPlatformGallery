@@ -66,7 +66,24 @@ function assertstop() {
 assertstop(1 === 1, 0 === 0); //nothing
 assertstop(true, true, false); //breaks and allows you to inspect (use console.trace to go back through the stack and see where it failed)
 
-
+//DebugBySignature (Chrome 62)
+//debug()'s a function based on a string or RegExp in its source
+function DebugBySignature(sig,tmp/*for now? console doesn't persist as an expression*/){
+    if(typeof sig == 'string' || sig instanceof RegExp){
+        let op = sig instanceof RegExp ? 'match' : 'includes';
+        let debuggedfunctions = [];
+        //debugger;
+        (tmp || queryObjects(Function))
+            .filter(function(v){ let ret = null; try{ ret = v.toString()[op](sig); } catch(e){  }; return ret; }) //only the ones that match the signature
+            .forEach((v)=>{debug(v); debuggedfunctions.push(v);})
+        return debuggedfunctions;
+    }
+    throw new Error('argument[0] must be a String or a RegExp');
+    //Usage: (As of Chrome 62)
+    //1. Evaluate in console: queryObjects(Function)
+    //2. Right-click and "store as global variable -> temp1" (For some reason Chrome will not honor var abc = queryObjects(Function) - as an expression)
+    //3. DebugBySignature('.js_oct_2016_addtocart[data-lvl=', temp1);
+}
 
 //DEBUGGING EVENTS:
 //1. be cautious - jQuery events jQuery('#mydiv').trigger('submit') - do not always fire native handlers in older versions of jQuery.
