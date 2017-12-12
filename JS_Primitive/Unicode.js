@@ -1,6 +1,9 @@
 //M Bynens article: https://mathiasbynens.be/notes/javascript-unicode
 
-//method of encoding/decoding to base64
+//method of encoding/decoding to base64 :: because btoa will throw an error if it is given a character outside of 0x00-0xFF.
+// encodeURIComponent() splits characters outside of that range into sequences of %FF codes
+// unescape converts() those "units" into corresponding individual characters.
+// the calls outside of that "reverse" the process.
 decodeURIComponent(escape(atob(btoa(unescape(encodeURIComponent('✓ à la mode'))))))
 
 //Unicode is like a database that maps Code Points (U+0041), to Symbols (A), to Letter Names ('Latin Uppercase Letter A')
