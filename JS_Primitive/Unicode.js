@@ -1,5 +1,8 @@
 //M Bynens article: https://mathiasbynens.be/notes/javascript-unicode
 
+//method of encoding/decoding to base64
+decodeURIComponent(escape(atob(btoa(unescape(encodeURIComponent('✓ à la mode'))))))
+
 //Unicode is like a database that maps Code Points (U+0041), to Symbols (A), to Letter Names ('Latin Uppercase Letter A')
 //Possible codepoints range from U+000000 -> U+10FFFF (= 1 million)
   //U+0000 -> U+FFFF is the Basic Multilingual Plane (Basic letters, etc.)
