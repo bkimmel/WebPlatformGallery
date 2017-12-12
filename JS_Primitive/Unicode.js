@@ -1,3 +1,5 @@
+//M Bynens article: https://mathiasbynens.be/notes/javascript-unicode
+
 //Unicode is like a database that maps Code Points (U+0041), to Symbols (A), to Letter Names ('Latin Uppercase Letter A')
 //Possible codepoints range from U+000000 -> U+10FFFF (= 1 million)
   //U+0000 -> U+FFFF is the Basic Multilingual Plane (Basic letters, etc.)
