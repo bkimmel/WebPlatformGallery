@@ -1,3 +1,5 @@
+Transform streams in Node are just Duplex streams with a (sometimes) more convenient implementation of .transform (in which you can call this.push() like a Readable) instead of separate .read and .write methods to implement.
+
 fieldset elements have a min-width assigned to them by default
 
 For css sizing: min-content makes the element as skinny as possible wrapping as much as possible. Max-content makes it as wide as possible with no wrapping.
