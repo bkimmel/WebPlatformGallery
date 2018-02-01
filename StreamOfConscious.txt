@@ -1,3 +1,5 @@
+Chrome forwards spacebar/enter keypresses to 'click' events for buttons but not for divs/etc.
+
 Tips for secure cookies/storage/etc: https://www.rdegges.com/2018/please-stop-using-local-storage/?utm_source=frontendfocus&utm_medium=email
 
 Transform streams in Node are just Duplex streams with a (sometimes) more convenient implementation of .transform (in which you can call this.push() like a Readable) instead of separate .read and .write methods to implement.
