@@ -107,3 +107,21 @@ function *coll() {
 var it = coll();
 it.next().value.then(function(v){ console.log(v); });
 
+//Passing in values with .next
+function* YieldIn() {
+    let x = yield 1;
+    //now x will be whatever was passed from next
+    console.log(x);   
+}
+
+var yi = YieldIn();
+console.log( yi.next(3) ); // == {value: 1,done: false}
+//Notice it does *not* log 3: the first call starts the generator
+yi.next(4); // in YieldIn, will resume and log value passed in via next (4)
+
+
+var yi = YieldIn();
+console.log( yi.next() ); // == {value: 1,done: false}
+yi.next(); // in YieldIn, will resume and log value passed in via next (undefined)
+
+
