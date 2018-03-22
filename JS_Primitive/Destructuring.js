@@ -25,3 +25,11 @@ function destructuredparams({x:xz=1}={x:2}){
 //destructuredparams({}) == 1
 //If an argument is provided and has an x, that is used
 //destructuredparams({x:3}) == 3
+
+
+//In general when you get to a place where a var/let would be, you can sub a destructuring pattern in *at that point*
+var src = {payload: [{data: {data: 333}}] };
+var {payload: [data]}=src; //So here, *data* is what is declared... and here data would be {data: {data: 333}}
+var {payload: [{data}]}=src; //But where the *first* data is, if we put an object desctructuring pattern like so, we get data=={data: 333}
+var {payload: [{data: x}]}=src; //Which is the equivalent of data: data, but if we change it to x to make it more explicit... ( here x still =={data: 333}, we just changed from the shorthand on the previous line for clarity )
+var {payload: [{data: {data: x}}]}=src; //And where the x was, we use *another* destructuring assignment, we get x==333 
