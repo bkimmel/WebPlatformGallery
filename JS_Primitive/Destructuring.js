@@ -33,3 +33,13 @@ var {payload: [data]}=src; //So here, *data* is what is declared... and here dat
 var {payload: [{data}]}=src; //But where the *first* data is, if we put an object desctructuring pattern like so, we get data=={data: 333}
 var {payload: [{data: x}]}=src; //Which is the equivalent of data: data, but if we change it to x to make it more explicit... ( here x still =={data: 333}, we just changed from the shorthand on the previous line for clarity )
 var {payload: [{data: {data: x}}]}=src; //And where the x was, we use *another* destructuring assignment, we get x==333 
+
+//Example of deep destructuring:
+//Deep destructuring
+var deepObject = {a: {b: {c: [{d: 1, e: 2}]}}}
+
+var {a: test} = deepObject;
+console.assert(test.b);
+
+var {a: {b: {c: [{d: var1, e: var2}]}}} = deepObject;
+console.assert(var1 === 1 && var2 === 2);
