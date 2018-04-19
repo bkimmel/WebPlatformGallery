@@ -1,3 +1,5 @@
+Keypress events only fire when a key that produces a character (letter, number, punctuation, enter) not for Alt, Shift, etc.
+
 ES6 modules are read-only views: connections to variables in the module are "live". E.g. imported vars are incremented when the var is incremented inside the module
 
 Use will-change: transform to promote elemts to their own layers (similar to the transform: translateZ(0) trick)
