@@ -68,23 +68,26 @@
         <script type="text/babel">
           
           class Details extends React.PureComponent {
+            constructor(props) {
+                super(props);
+                this.state = {menuOpen: false};
+                console.info('this.state: %O', this.state);
+            }
             menuOpen: false
             render() {
               let {menuName, children, forceOpen=false} = this.props;
               return (
                 <section role="menu" className={"menu_container"} onBlur={(event)=>{
-                    console.log('blur');
                     let cf = event.currentTarget;
                     setTimeout(()=>{
-                        this.menuOpen = !!cf.querySelector(':focus');
-                        this.forceUpdate();
+                        this.setState({menuOpen: !!cf.querySelector(':focus')});
                     },0)
                     }}
                     >
                     <h1>
-                        <button onClick={()=>{  this.menuOpen = !this.menuOpen; this.forceUpdate(); }}>{menuName}</button>
+                        <button onClick={()=>{  this.setState({menuOpen: !this.state.menuOpen}); }}>{menuName}</button>
                     </h1>
-                    <ul style={{display: ((this.menuOpen||forceOpen) ? 'block' : 'none')}}>
+                    <ul style={{display: ((this.state.menuOpen||forceOpen) ? 'block' : 'none')}}>
                         {React.Children.map(children, (menuitem, index) => {
                           return (
                             <li role="menuitem">
