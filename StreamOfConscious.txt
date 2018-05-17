@@ -1,3 +1,6 @@
+git reset HEAD~1 //rolls back the most recent commit but keeps changes
+git revert //rolls back and makes a new commit over the old (advanced ones)
+
 Keypress events only fire when a key that produces a character (letter, number, punctuation, enter) not for Alt, Shift, etc.
 
 ES6 modules are read-only views: connections to variables in the module are "live". E.g. imported vars are incremented when the var is incremented inside the module
