@@ -1,0 +1,139 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <style>
+      .menu_container {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        outline: 1px solid green;
+        margin: 1em;
+        padding: 0 1em;
+        z-index: 1;
+        background: hsla(180,50%,80%,1);
+      }
+
+      .menu_container h1 {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      .menu_container button {
+        margin: .25em 0;
+        padding: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: none;
+        background: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        outline: 1px solid blue;
+      }
+
+      .menu_container button:focus {
+        background: red;
+      }
+
+      .menu_container ul {
+        box-sizing: border-box;
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        left: 0%;
+        margin: 0;
+        outline: 1px solid red;
+        line-height: 1.5;
+        z-index: 10;
+        list-style: none;
+        padding-left: inherit;
+        background: inherit;
+        color: white;
+      }
+
+      .menu_container ul li {
+        margin: .25em 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Testing Menu</h1>
+    <button>Control Before</button>
+    <div id="greeting-div"></div>
+    <button>Control After</button>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script crossorogin src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+    <script type="text/babel">
+      
+          
+          class Details extends React.PureComponent {
+            render() {
+              let {menuName, children, onOpen=()=>{}, onClose=()=>{}, isOpen=false} = this.props;
+              return (
+                <section ref={ menuboundary => {this.menuboundary = menuboundary} } role="menu" className={"menu_container"} onBlur={(event)=>{
+                        if (this.menuboundary.contains(event.relatedTarget) === false) {
+                          onClose()
+                        }
+                    }}
+                    >
+                    <h1>
+                        <button onClick={()=>{  (isOpen ? onClose : onOpen)() }}>{menuName}</button>
+                    </h1>
+                    <ul style={{display: (isOpen ? 'block' : 'none')}}>
+                        {React.Children.map(children, (menuitem, index) => {
+                          return (
+                            <li role="menuitem">
+                                {menuitem}
+                            </li>
+                          )
+                        })}
+                    </ul>
+                </section>
+              )
+            }
+          };
+
+          Details.propTypes = {
+            /** Menu items. */
+            children: PropTypes.any,
+            /** Name and Label for the menu (will appear as the header of the menu in the UI) */
+            menuName: PropTypes.string.isRequired,
+            /** Property that determines if the menu is open */
+            onOpen: PropTypes.func,
+            onClose: PropTypes.func,
+            /** Provided state*/
+            isOpen: PropTypes.bool,
+          };
+
+           let isOpen = false;
+          function onOpen() {
+              isOpen = true;
+          }
+          function onClose() {
+              isOpen = false;
+          }
+          ReactDOM.render(
+            <Details
+                
+                menuName="Test"
+
+                onOpen={onOpen}
+                onClose={onClose}
+                isOpen={!!isOpen}
+            >
+                <a href="#">Option 0</a>
+                <a href="#">Option 1</a>
+                <a href="#">Option 2</a>
+                <a href="#">Option 3</a>
+                <button>Option 4</button>
+            </Details>,
+            document.getElementById('greeting-div')
+          );
+    
+        
+    </script>
+  </body>
+</html>
