@@ -9,6 +9,8 @@ Use will-change: transform to promote elemts to their own layers (similar to the
 
 Js destructuring creates shallow copies (no shared reference)
 
+You can destructure to object/array assignments: let a = {}, b = []; ({c: a.d, d: b[0]} = {c: 'e', d: 'f'})
+
 Chrome forwards spacebar/enter keypresses to 'click' events for buttons but not for divs/etc.
 
 Tips for secure cookies/storage/etc: https://www.rdegges.com/2018/please-stop-using-local-storage/?utm_source=frontendfocus&utm_medium=email
