@@ -1,3 +1,5 @@
+box-shadow rules will not apply to display: table elements on all browsers unless the border-collapse is set to separate. Use that and border-spacing to work around issues.
+
 git reset HEAD~1 //rolls back the most recent commit but keeps changes
 git revert //rolls back and makes a new commit over the old (advanced ones)
 
