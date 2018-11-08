@@ -1,3 +1,5 @@
+Line-height values should be unitless so they are proportional to font size
+
 box-shadow rules will not apply to display: table elements on all browsers unless the border-collapse is set to separate. Use that and border-spacing to work around issues.
 
 git reset HEAD~1 //rolls back the most recent commit but keeps changes
