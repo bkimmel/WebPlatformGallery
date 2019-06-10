@@ -4,9 +4,13 @@ function addWabtToPage({version}) {
   }
   const sc = document.createElement('script');
   sc.src = `https://cdn.jsdelivr.net/gh/AssemblyScript/wabt.js@${version}/index.js`
-  document.head.appendChild(sc);
-  window[Symbol.for('WABT')] = sc;
-  return Promise.resolve( window[Symbol.for('WABT')] );
+  return new Promise((res,rej)=>{
+    sc.onload = () => {
+      window[Symbol.for('WABT')] = sc;
+      res(sc)
+    };
+    document.head.appendChild(sc);
+  })
 }
 
 var wasmSource = 
@@ -19,6 +23,7 @@ var wasmSource =
 )`;
 
 async function parseWat() {
+  addWabtToPage('1.0.11')
   var parsedWat = WabtModule().parseWat('add.wasm', wasmSource);
   var { buffer } = parsedWat.toBinary({log: false, canonicalize_lebs: false, relocatable: false, write_debug_names: false})
   var wasmModule = await WebAssembly.compile(buffer)
