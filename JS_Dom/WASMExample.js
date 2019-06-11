@@ -18,12 +18,12 @@ var wasmSource =
   (func $add (param $lhs i32) (param $rhs i32) (result i32)
     get_local $lhs
     get_local $rhs
-    i32.add)
+  i32.add)
   (export "add" (func $add))
 )`;
 
 async function parseWat() {
-  addWabtToPage('1.0.11')
+  await addWabtToPage({version: '1.0.11'})
   var parsedWat = WabtModule().parseWat('add.wasm', wasmSource);
   var { buffer } = parsedWat.toBinary({log: false, canonicalize_lebs: false, relocatable: false, write_debug_names: false})
   var wasmModule = await WebAssembly.compile(buffer)
