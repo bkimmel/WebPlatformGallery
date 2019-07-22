@@ -5,6 +5,7 @@
     (local $currentoffset i32)
     (local $max i32)
     (block
+     ;;4bytes = 1 i32 entry
       (set_local $max (i32.mul(get_local $scale)(i32.const 4)))
       (set_local $currentoffset (i32.const 0)) 
       (loop
