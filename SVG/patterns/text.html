@@ -86,6 +86,30 @@
 				<rect x="0.1in" y="1.5in" width="90%" height="1in" />
 			</g>
 		</svg>
+	    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <pattern id="stripes2" x="5" width="20" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(40,50,50)">
+					<line x1="3" x2="3" y2="100%" stroke="maroon" stroke-width="6"/>
+					<line x1="9" x2="9" y2="100%" stroke="coral" stroke-width="6"/>
+					<line class="keyline" x1="15" x2="15" y2="100%" stroke="tomato" stroke-width="2"/>
+				</pattern>
+		<filter id="extrusion">
+		  <feComponentTransfer in="SourceGraphic" result="alpha_channel">
+            <feFuncA type="identity"></feFuncA>
+            <feFuncR type="linear" slope="0" intercept="0"></feFuncR>
+            <feFuncG type="linear" slope="0" intercept="0"></feFuncG>
+            <feFuncB type="linear" slope="0" intercept="0"></feFuncB>
+          </feComponentTransfer>
+		  <feMorphology operator="dilate" in="alpha_channel" radius="1.9" result="extrude"/>
+		  <feMerge>
+		      <feMergeNode in="extrude" />
+		      <feMergeNode in ="SourceGraphic">
+		  </feMerge>
+		</filter>		
+      </defs>
+        
+        <text filter="url(#extrusion)" x="50" y="65" text-anchor="middle" style="font-family: Helvetica; font-size: 56;" fill="url(#stripes2)">Test</text>
+    </svg>
 		                  
 	</body>
 </html>
