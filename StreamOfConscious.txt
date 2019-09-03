@@ -1,3 +1,5 @@
+text-decoration-skip-ink makes underline not overlap descenders from letters like y, p, etc.
+
 CSS Reset values: initial - set to W3C spec. revert - set to UA sheet. inherit - set same as parent. unset - inherit (if any) then initial.
 
 Force an element into an invalid state by calling el.setCustomValidity('anything') (or .setCustomValidity('') for :valid)
