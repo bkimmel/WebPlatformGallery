@@ -1,3 +1,5 @@
+2nd argument of JSON.stringify allows replacement patterns for things like Set(s) which would normally serialize to `null`
+
 text-decoration-skip-ink makes underline not overlap descenders from letters like y, p, etc.
 
 CSS Reset values: initial - set to W3C spec. revert - set to UA sheet. inherit - set same as parent. unset - inherit (if any) then initial.
