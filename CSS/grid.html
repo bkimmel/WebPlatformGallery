@@ -1,0 +1,31 @@
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Example grid CSS</title>
+</head>
+<body>
+<style>
+div.outer {
+  width: 80vw;
+  height: 80vh;
+  outline: 1px solid red;
+  margin: 10px auto;
+  display: grid;
+  grid-template-rows: auto 10px;
+  grid-template-columns: [lead-start]1fr [lead-end content-start]minmax(200px, 1fr) [content-end tail-start]1fr[tail-end];
+}
+
+.outer svg {
+  outline: 1px solid green;
+  grid-column: content-start / content-end;
+  width: 100%;
+  height: 30vh;
+}
+</style>
+<div class="outer">
+  <svg class="partial" viewBox="0 0 3000 1000" preserveAspectRatio="xMidYMid meet">
+    <rect x="0" y="0" width="3000" height="1000" fill-opacity=".1"/>
+  </svg>
+</div>
+</body>
+</html>
