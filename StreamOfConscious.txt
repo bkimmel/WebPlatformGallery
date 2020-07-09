@@ -1,3 +1,5 @@
+When using webfonts, make sure you specify point values that the loaded fonts actually have, otherwise their display behavior is undefined: https://news.ycombinator.com/item?id=23759587
+
 `<path>`s can't be used inside masks, they use `<clipPath>` instead
 
 2nd argument of JSON.stringify allows replacement patterns for things like Set(s) which would normally serialize to `null`
