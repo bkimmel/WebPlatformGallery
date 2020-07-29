@@ -1,3 +1,5 @@
+line-height: calc(1ex / 0.32); An "optimal" line-height that adjusts to font usage.
+
 When using webfonts, make sure you specify point values that the loaded fonts actually have, otherwise their display behavior is undefined: https://news.ycombinator.com/item?id=23759587
 
 `<path>`s can't be used inside masks, they use `<clipPath>` instead
