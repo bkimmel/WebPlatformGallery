@@ -1,3 +1,5 @@
+a "node" is any DOM object in the tree, an "Elment" is a specific _type_of node that can ha children, etc.
+
 line-height: calc(1ex / 0.32); An "optimal" line-height that adjusts to font usage.
 
 When using webfonts, make sure you specify point values that the loaded fonts actually have, otherwise their display behavior is undefined: https://news.ycombinator.com/item?id=23759587
