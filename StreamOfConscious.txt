@@ -1,3 +1,5 @@
+Arrows in arrow functions bind extremely weakly: () => foo() is like (()=>{ return foo()}) and not (()=>{ return foo})()
+
 You can use the CSS any-pointer: coarse media query to apply styles for touchscreens that make your website more touch friendly, e.g., you can make buttons and other touch targets larger and increase the spacing between them [css-tricks.com]
 
 backdrop-filter: blur(5px) can replace the need for a positioned element underneath to blur.
