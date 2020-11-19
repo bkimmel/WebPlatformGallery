@@ -1,3 +1,5 @@
+Custom elements change in response to their slotted content changing. e.g. $('my-custom').appendChild(document.createElement('li')) adds a new item to a list. 
+
 Arrows in arrow functions bind extremely weakly: () => foo() is like (()=>{ return foo()}) and not (()=>{ return foo})()
 
 You can use the CSS any-pointer: coarse media query to apply styles for touchscreens that make your website more touch friendly, e.g., you can make buttons and other touch targets larger and increase the spacing between them [css-tricks.com]
