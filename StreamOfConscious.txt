@@ -1,4 +1,6 @@
-Custom elements change in response to their slotted content changing. e.g. $('my-custom').appendChild(document.createElement('li')) adds a new item to a list. 
+Browsers that support modules won't load <script nomodule>
+
+Custom elements change in response to their slotted content changing. e.g. $('my-custom-slots').appendChild(document.createElement('li')) adds a new item to a list
 
 Arrows in arrow functions bind extremely weakly: () => foo() is like (()=>{ return foo()}) and not (()=>{ return foo})()
 
