@@ -1,3 +1,5 @@
+"const abc = 123; var def = 456;" window.abc will === undefined bc it's declarative space. window.def will === 456 because it's object space. https://weizman.github.io/page-what-is-a-realm-in-js/
+
 Browsers that support modules won't load <script nomodule>
 
 Custom elements change in response to their slotted content changing. e.g. $('my-custom-slots').appendChild(document.createElement('li')) adds a new item to a list
