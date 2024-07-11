@@ -1,0 +1,29 @@
+type BlockType =
+  'HTML'
+  |'IMAGE'
+  |'VIDEO'
+
+interface BaseBlockType {
+  type: BlockType,
+  value: unknown
+}
+
+interface HTMLBlock extends BaseBlockType {
+  type: 'HTML',
+  value: {
+    data: string
+  }
+}
+
+type BlockValues = HTMLBlock | BaseBlockType;
+
+type ForceExtract<R extends BlockType> = R extends infer Y ? Extract<BlockValues, {type: Y}> : never
+
+function printBlockValue<T extends BlockType>(blockType: T, value: ForceExtract<T>['value']) {
+  if (blockType === 'HTML') {
+    //This... works. and it matches the function signature... so win, I guess?
+    console.log(value.data)
+  } else {
+    console.log('who knows what type that is');
+  }
+}
